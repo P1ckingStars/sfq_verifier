@@ -9,6 +9,8 @@
 
 using namespace std;
 
+namespace ta {
+
 typedef int clock_id;
 typedef int state_id;
 typedef int input_id;
@@ -43,6 +45,7 @@ public:
         return (x > val) || (exclusive && (x == val));
     }
 };
+
 class UBContraints : Constraints {
     bool exclusive;
     int val;
@@ -67,7 +70,7 @@ class TransitionTable {
     vector<vector<Edge>> table_;
 };
 
-
+}
 
 
 

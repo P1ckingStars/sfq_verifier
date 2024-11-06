@@ -5,13 +5,11 @@
 
 add_compile_options(-g)
 
-add_library(DSMLib
-    simple_mutex.cpp
-    main.cpp
-    dsm_node.cpp
-    fault.cpp)
+add_library(TALib
+    timed_automata.cpp
+    regioned_timed_automata.cpp)
 
-target_include_directories(DSMLib PUBLIC
+target_include_directories(TALib PUBLIC
     "${CMAKE_SOURCE_DIR}/src/include"
 )
 

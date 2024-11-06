@@ -17,9 +17,9 @@ add_subdirectory(src/lib)
 # add the executable
 add_executable(test1 examples/test1.cpp)
 
-link_directories(${PROJECT_SOURCE_DIR}/dependency)
+# link_directories(${PROJECT_SOURCE_DIR}/dependency)
 
-target_link_libraries(test1 DSMLib rpc)
+target_link_libraries(test1 TALib)
 
 target_include_directories(test1 PUBLIC
                           "${PROJECT_BINARY_DIR}"

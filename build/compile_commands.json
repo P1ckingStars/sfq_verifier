@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/arthur/Documents/repos/sfq_verifier/build",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_verifier/build -I/home/arthur/Documents/repos/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/test1.dir/examples/test1.cpp.o -c /home/arthur/Documents/repos/sfq_verifier/examples/test1.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_verifier/examples/test1.cpp",
+  "output": "CMakeFiles/test1.dir/examples/test1.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_verifier/build/src/lib",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/timed_automata.cpp.o -c /home/arthur/Documents/repos/sfq_verifier/src/lib/timed_automata.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_verifier/src/lib/timed_automata.cpp",
+  "output": "src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_verifier/build/src/lib",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o -c /home/arthur/Documents/repos/sfq_verifier/src/lib/regioned_timed_automata.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_verifier/src/lib/regioned_timed_automata.cpp",
+  "output": "src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o"
+}
+]

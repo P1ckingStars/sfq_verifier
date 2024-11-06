@@ -1,27 +1,28 @@
 #include "region_timed_automata.hpp"
 #include "timed_automata.hpp"
+#include <deque>
 #include <unordered_set>
 
 using namespace ta;
 
-string ClockState::to_string() {
+string ClockState::to_string() const {
   stringstream ss;
   for (int i = 0; i < orders.size(); i++) {
     ss << orders[i] << equal[i];
   }
   ss << "\n";
-  for (int i = 0; i < clock_ticks_.size(); i++) {
-    ss << clock_ticks_[i] << " ";
+  for (int i = 0; i < clock_ticks.size(); i++) {
+    ss << clock_ticks[i] << " ";
   }
   return ss.str();
 }
 
 bool TimedState::operator==(TimedState const &state) {
   bool res;
-  if (clock_state->orders.size() != state.clock_state->orders.size() ||
-      clock_state->equal.size() != state.clock_state->equal.size() ||
-      state_ != state.state_ ||
-      clock_state->clock_ticks_ != state.clock_state->clock_ticks_) {
+  if (this->clock_state->orders.size() != state.clock_state->orders.size() ||
+      this->clock_state->equal.size() != state.clock_state->equal.size() ||
+      this->state != state.state ||
+      this->clock_state->clock_ticks != state.clock_state->clock_ticks) {
     return false;
   }
   for (int i = 0; i < clock_state->orders.size(); i++) {
@@ -33,7 +34,7 @@ bool TimedState::operator==(TimedState const &state) {
       return false;
   }
   for (int i = 0; i < clock_state->orders.size(); i++) {
-    if (clock_state->clock_ticks_[i] != state.clock_state->clock_ticks_[i])
+    if (this->clock_state->clock_ticks[i] != state.clock_state->clock_ticks[i])
       return false;
   }
   return true;
@@ -41,7 +42,7 @@ bool TimedState::operator==(TimedState const &state) {
 
 string TimedState::to_string() {
   stringstream ss;
-  ss << "state: " << state_ << " \n";
+  ss << "state: " << state << " \n";
   ss << clock_state->to_string();
   return ss.str();
 }
@@ -56,7 +57,7 @@ void ClockState::advance() {
     this->orders[i] = this->orders[i - 1];
     this->equal[i] = this->equal[i - 1];
   }
-  clock_ticks_[last_clk]++;
+  clock_ticks[last_clk]++;
   this->orders[0] = last_clk;
   this->equal[0] = true;
 }
@@ -75,14 +76,67 @@ void ClockState::set_zero(unordered_set<clock_id> const &clock) {
   for (auto clk : clock) {
     this->orders[i] = clk;
     this->equal[i] = true;
-    this->clock_ticks_[clk] = 0;
+    this->clock_ticks[clk] = 0;
     i++;
   }
 }
 
-RegionTransitionTable::RegionTransitionTable(TransitionTable *transition_table) {
-    
+inline ClockState *
+clock_state_query(ClockState *clk,
+                  unordered_map<string, ClockState *> &str2clk) {
+  string q = clk->to_string();
+  if (str2clk.count(q)) {
+    delete clk;
+    str2clk[q];
+  } else {
+    return str2clk[q] = clk;
+  }
 }
+
+inline TimedState const *
+timed_state_query(TimedState *ts,
+                  unordered_map<string, timed_state_id> &str2sid,
+                  vector<TimedState const *> &states) {
+  string q = ts->to_string();
+  if (str2sid.count(q)) {
+    delete ts;
+    return states[str2sid[q]];
+  } else {
+    str2sid[q] = states.size();
+    states.push_back(ts);
+    return ts;
+  }
+}
+RegionTransitionTable::RegionTransitionTable(
+    TransitionTable *transition_table) {
+  this->num_clock = transition_table->num_clocks;
+  unordered_map<string, ClockState *> str2clk;
+  TimedState *initial_state = new TimedState();
+  ClockState *zero_clk_state = new ClockState();
+
+#define CLOCK_STATE(clk) clock_state_query(clk, str2clk)
+#define TIMED_STATE(s) timed_state_query(s, state2id_, states_)
+
+  initial_state->clock_state = CLOCK_STATE(zero_clk_state);
+  initial_state->state = 0;
+  deque<TimedState const *> q;
+  q.push_back(TIMED_STATE(initial_state));
+
+  while (!q.empty()) {
+    auto curr_state = q.front();
+    auto curr_clk = curr_state->clock_state;
+    q.pop_front();
+    state_id untimed_state = curr_state->state;
+
+  }
+}
+
+
+
+
+
+
+
 
 
 

@@ -55,19 +55,23 @@ public:
     }
 };
 
+struct ClockMax {
+  vector<int> clocks;
+};
+
 struct Edge {
     state_id from_state;
     state_id to_state;
-    set<set<input_id>> inputs;
-    set<output_id> outputs;
+    set<input_id> inputs;
     unordered_map<int, Constraints *> constraints;
     vector<int> clocks;
 };
 
-class TransitionTable {
-    uint64_t num_states_;
-    uint64_t num_clocks_;
-    vector<vector<Edge>> table_;
+struct TransitionTable {
+    int num_states;
+    int num_clocks;
+    vector<vector<Edge>> table;
+    ClockMax * get_clock_max();
 };
 
 }

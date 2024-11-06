@@ -1,0 +1,6 @@
+/home/arthur/Documents/repos/sfq_verifier/build/CMakeFiles/test1.dir
+/home/arthur/Documents/repos/sfq_verifier/build/CMakeFiles/edit_cache.dir
+/home/arthur/Documents/repos/sfq_verifier/build/CMakeFiles/rebuild_cache.dir
+/home/arthur/Documents/repos/sfq_verifier/build/src/lib/CMakeFiles/TALib.dir
+/home/arthur/Documents/repos/sfq_verifier/build/src/lib/CMakeFiles/edit_cache.dir
+/home/arthur/Documents/repos/sfq_verifier/build/src/lib/CMakeFiles/rebuild_cache.dir

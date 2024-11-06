@@ -1,0 +1,2 @@
+/usr/bin/ar qc libTALib.a CMakeFiles/TALib.dir/timed_automata.cpp.o CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o
+/usr/bin/ranlib libTALib.a

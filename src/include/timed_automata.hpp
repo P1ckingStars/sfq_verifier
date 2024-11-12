@@ -59,7 +59,7 @@ struct ClockMax {
   vector<int> clocks;
 };
 
-struct Edge {
+struct TimedEdge {
     state_id from_state;
     state_id to_state;
     set<input_id> inputs;
@@ -70,7 +70,7 @@ struct Edge {
 struct TransitionTable {
     int num_states;
     int num_clocks;
-    vector<vector<Edge>> table;
+    vector<vector<TimedEdge>> table;
     ClockMax * get_clock_max();
 };
 

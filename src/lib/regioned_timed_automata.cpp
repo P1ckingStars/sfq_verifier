@@ -28,8 +28,6 @@ bool TimedState::operator==(TimedState const &state) {
   for (int i = 0; i < clock_state->orders.size(); i++) {
     if (clock_state->orders[i] != state.clock_state->orders[i])
       return false;
-  }
-  for (int i = 0; i < clock_state->equal.size(); i++) {
     if (clock_state->equal[i] != state.clock_state->equal[i])
       return false;
   }

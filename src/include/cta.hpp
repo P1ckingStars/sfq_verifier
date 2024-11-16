@@ -34,11 +34,11 @@ class PulseCA {
     vector<PulseChannel *> channels_;
 public:
     PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels);
-    Automata * to_dfa();
+    Automata * to_dfa(); // TODOS
 };
 
 class CARefinedAutomata: Automata {
-    vector<vector<letter_t>> act_mp_;
+    vector<vector<letter_t>> act_mp_; 
 public:
     CARefinedAutomata(Automata * automata, vector<vector<letter_t>> act_mp_);
     letter_t act2letter(PulseCAAct act) {

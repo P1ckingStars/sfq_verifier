@@ -7,16 +7,23 @@ namespace ta {
 
 typedef vector<state_t> eq_class;
 
+// union find algorithm, because union find is used to generate disjoint set, so
+// we can us it.
+
+
+// init
 void init_equivalant(eq_class &classes) {
   for (int i = 0; i < classes.size(); i++) {
     classes[i] = i;
   }
 }
 
+// every element points to its class id
 state_t finalize(eq_class &classes, int i) {
   return classes[i] == i ? i : finalize(classes, classes[i]);
 }
 
+// make a map from 1 to k for k equivalant classes
 unordered_map<state_t, state_t> finalize_equivalant(eq_class &classes) {
   for (int i = 0; i < classes.size(); i++) {
     classes[i] = finalize(classes, i);
@@ -33,8 +40,11 @@ unordered_map<state_t, state_t> finalize_equivalant(eq_class &classes) {
   return new_mapping;
 }
 
+// union
 void add_equivalant(eq_class &classes, state_t i, state_t j) { classes[j] = i; }
 
+
+// collapse states for one step
 size_t Automata::reduce() {
   eq_class classes(this->states.size());
   init_equivalant(classes);
@@ -71,10 +81,13 @@ size_t Automata::reduce() {
   return new_mapping.size();
 }
 
+// collapse states until no more states to collapse
 size_t Automata::full_reduce() {
-    size_t new_size;
-    for (size_t size = this->states.size(); size != (new_size = reduce()); size = new_size); 
-    return this->states.size();
+  size_t new_size;
+  for (size_t size = this->states.size(); size != (new_size = reduce());
+       size = new_size)
+    ;
+  return this->states.size();
 }
 
-}
+} // namespace ta

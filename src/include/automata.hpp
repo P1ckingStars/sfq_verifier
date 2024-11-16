@@ -19,9 +19,11 @@ struct Edge {
   state_t from;
   state_t to;
   unordered_set<letter_t> letters;
+    //definition of equivalant classes
   bool operator==(Edge const &e) const {
     return this->to == e.to && this->letters == e.letters;
   }
+    //provide an operation for c++ standard set to search
   bool operator<(Edge const &e) const {
     if (this->to < e.to)
       return true;

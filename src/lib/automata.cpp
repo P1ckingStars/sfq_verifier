@@ -2,6 +2,9 @@
 #include <cstddef>
 #include <unordered_map>
 
+using namespace std;
+namespace ta {
+
 typedef vector<state_t> eq_class;
 
 void init_equivalant(eq_class &classes) {
@@ -72,4 +75,6 @@ size_t Automata::full_reduce() {
     size_t new_size;
     for (size_t size = this->states.size(); size != (new_size = reduce()); size = new_size); 
     return this->states.size();
+}
+
 }

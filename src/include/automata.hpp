@@ -8,6 +8,8 @@
 #include <unordered_set>
 #include <vector>
 
+namespace ta {
+
 typedef uint32_t letter_t;
 typedef uint32_t state_t;
 
@@ -51,6 +53,9 @@ class Automata {
 public:
   size_t reduce();
   size_t full_reduce();
+  bool run(vector<letter_t> word);
 };
+
+} // namespace ta
 
 #endif

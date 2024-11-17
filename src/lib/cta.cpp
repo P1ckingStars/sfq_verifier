@@ -19,15 +19,26 @@ string PulseCAState::to_str() {
   return ss.str();
 }
 
-PulseCA::PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels) : automatas_(automata), channels_(channels) {
-    int idx = 0;
-    vector<unordered_map<letter_t, letter_t>> input_map(automatas_.size());
-    for (int i = 0; i < automata.size(); i++) {
-        idx = automatas_[i]->replace_input(idx, input_map[i]);
+PulseCA::PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels)
+    : automatas_(automata), channels_(channels) {
+  int idx = 0;
+  vector<unordered_map<letter_t, letter_t>> input_map(automatas_.size());
+  for (int i = 0; i < automata.size(); i++) {
+    int prev_idx = idx;
+    idx = automatas_[i]->replace_input(idx, input_map[i]);
+    for (int k = prev_idx; k < idx; k++) {
+      letter4automata[k] = i;
     }
-
+  }
+  for (int i = 0; i < channels_.size(); i++) {
+    PulseChannel *c = channels_[i];
+    c->from_act = input_map[c->from][c->from_act];
+    c->to_act = input_map[c->to][c->to_act];
+    input_channels_[c->from_act] = channels_[i];
+    output_channels_[c->to_act] = channels_[i];
+  }
+  this->total_letter = idx;
 }
-
 
 #define APPEND_STATE(s)                                                        \
   {                                                                            \
@@ -46,9 +57,15 @@ Automata *PulseCA::to_dfa() {
   while (!q.empty()) {
     auto state = q.front();
     q.pop_front();
+    for (int i = 0; i < this->total_letter; i++) {
+    }
   }
 
   return res;
+}
+
+PulseCAState * PulseCA::next(PulseCAState const *state, letter_t act) {
+    
 }
 
 } // namespace ta

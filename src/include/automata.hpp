@@ -61,12 +61,14 @@ public:
   //  suppose begin = 100
   //  100 101 102 103 104 105
   letter_t replace_input(letter_t begin, unordered_map<letter_t, letter_t> &mp);
+    #define STATE_NOT_EXISTS (1 << 31)
+// return (1 << 31) if not exists
+  state_t next(state_t from, letter_t act);
   void appendNode();
   void appendEdge(Edge e);
   size_t reduce();
   size_t full_reduce();
   bool run(vector<letter_t> word);
-  state_t next(state_t from, letter_t act);
 };
 
 } // namespace ta

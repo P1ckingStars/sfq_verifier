@@ -65,7 +65,7 @@ Automata *PulseCA::to_dfa() {
 }
 
 PulseCAState * PulseCA::next(PulseCAState const *state, letter_t act) {
-    
+    automata_id a_id = this->letter4automata[act];   
 }
 
 } // namespace ta

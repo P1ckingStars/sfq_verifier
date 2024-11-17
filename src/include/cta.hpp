@@ -3,6 +3,7 @@
 
 #include "automata.hpp"
 #include "timed_automata.hpp"
+#include <cstddef>
 #include <cstdint>
 #include <iostream>
 #include <unordered_map>
@@ -12,7 +13,7 @@ namespace ta {
 
 typedef uint32_t automata_id;
 
-class PulseChannel {
+struct PulseChannel {
   automata_id from;
   automata_id to;
   letter_t from_act;
@@ -34,10 +35,15 @@ struct PulseCAAct {
 };
 
 class PulseCA {
+  size_t total_letter;
   vector<Automata *> automatas_; // Automata may share the same input characters
                                  // when they first initialized, but shouldn't
                                  // use the same inputs here, must differentiate
   vector<PulseChannel *> channels_;
+  unordered_map<letter_t, PulseChannel *> input_channels_;
+  unordered_map<letter_t, PulseChannel *> output_channels_;
+  unordered_map<letter_t, automata_id> letter4automata;
+  PulseCAState *next(PulseCAState const *state, letter_t act);
 
 public:
   PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels);

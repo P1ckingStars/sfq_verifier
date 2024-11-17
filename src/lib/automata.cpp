@@ -96,5 +96,20 @@ void Automata::appendEdge(Edge e) {
   this->states[e.from].fwd_edges.insert(e);
   this->states[e.to].bwd_edges.insert(e);
 }
-letter_t Automata::replace_input(letter_t begin, unordered_map<letter_t, letter_t> & mp) {}
+letter_t Automata::replace_input(letter_t begin, unordered_map<letter_t, letter_t> & mp) {
+  for (Node n : this->states) {
+    for (Edge edge : n.fwd_edges) {
+      unordered_set<letter_t> new_letters;
+      for (letter_t l : edge.letters) {
+        if (!mp.count(l)) {
+          mp.insert({l, begin});
+          begin++;
+        }
+        new_letters.insert(mp[l]);
+      }
+      edge.letters = new_letters;
+    }
+  }
+  return begin;
+}
 } // namespace ta

@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <unordered_map>
 #include <vector>
+#include <iostream>
 
 
 namespace ta {
@@ -22,6 +23,11 @@ class PulseChannel {
 class PulseCAState {
     vector<state_t> states;
     vector<bool> channel_states;
+public:
+    bool operator==(PulseCAState const & s) {
+        return s.states == this->states && channel_states == this->channel_states;
+    }
+    string to_str();
 };
 
 struct PulseCAAct {

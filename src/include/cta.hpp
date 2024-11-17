@@ -12,8 +12,10 @@
 namespace ta {
 
 typedef uint32_t automata_id;
+typedef uint32_t channel_id;
 
 struct PulseChannel {
+  channel_id id;
   automata_id from;
   automata_id to;
   letter_t from_act;
@@ -40,8 +42,8 @@ class PulseCA {
                                  // when they first initialized, but shouldn't
                                  // use the same inputs here, must differentiate
   vector<PulseChannel *> channels_;
-  unordered_map<letter_t, PulseChannel *> input_channels_;
-  unordered_map<letter_t, PulseChannel *> output_channels_;
+  vector<unordered_map<letter_t, PulseChannel *>> input_channels_;
+  vector<unordered_map<letter_t, PulseChannel *>> output_channels_;
   unordered_map<letter_t, automata_id> letter4automata;
   PulseCAState *next(PulseCAState const *state, letter_t act);
 

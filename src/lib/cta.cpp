@@ -34,8 +34,8 @@ PulseCA::PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels)
     PulseChannel *c = channels_[i];
     c->from_act = input_map[c->from][c->from_act];
     c->to_act = input_map[c->to][c->to_act];
-    input_channels_[c->from_act] = channels_[i];
-    output_channels_[c->to_act] = channels_[i];
+    input_channels_[c->from][c->from_act] = channels_[i];
+    output_channels_[c->to][c->to_act] = channels_[i];
   }
   this->total_letter = idx;
 }
@@ -64,8 +64,39 @@ Automata *PulseCA::to_dfa() {
   return res;
 }
 
-PulseCAState * PulseCA::next(PulseCAState const *state, letter_t act) {
-    automata_id a_id = this->letter4automata[act];   
+PulseCAState *PulseCA::next(PulseCAState const *state, letter_t act) {
+  automata_id a_id = this->letter4automata[act];
+  state_t n_state;
+  if ((n_state = automatas_[a_id]->next(state->states[a_id], act)) !=
+      STATE_NOT_EXISTS) {
+    if (output_channels_[a_id].count(act)) {
+      PulseChannel const *ch = output_channels_[a_id][act];
+      if (state->channel_states[ch->id]) {
+        PulseCAState *new_state = new PulseCAState();
+        *new_state = *state;
+        new_state->states[a_id] = n_state;
+        new_state->channel_states[ch->id] = false;
+        return new_state;
+      } else
+        return nullptr;
+    }
+    if (input_channels_[a_id].count(act)) {
+      PulseChannel const *ch = input_channels_[a_id][act];
+      if (!state->channel_states[ch->id]) {
+        PulseCAState *new_state = new PulseCAState();
+        *new_state = *state;
+        new_state->states[a_id] = n_state;
+        new_state->channel_states[ch->id] = true;
+        return new_state;
+      } else
+        return nullptr;
+    }
+    PulseCAState *new_state = new PulseCAState();
+    *new_state = *state;
+    new_state->states[a_id] = n_state;
+    return new_state;
+  }
+  return nullptr;
 }
 
 } // namespace ta

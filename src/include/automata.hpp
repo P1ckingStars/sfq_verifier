@@ -1,10 +1,12 @@
 #ifndef AUTOMATA
 #define AUTOMATA
 
+#include "timed_automata.hpp"
 #include <cstdint>
 #include <forward_list>
 #include <memory>
 #include <set>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
@@ -19,11 +21,11 @@ struct Edge {
   state_t from;
   state_t to;
   unordered_set<letter_t> letters;
-    //definition of equivalant classes
+  // definition of equivalant classes
   bool operator==(Edge const &e) const {
     return this->to == e.to && this->letters == e.letters;
   }
-    //provide an operation for c++ standard set to search
+  // provide an operation for c++ standard set to search
   bool operator<(Edge const &e) const {
     if (this->to < e.to)
       return true;
@@ -43,6 +45,7 @@ struct Node {
   state_t id;
   set<Edge> fwd_edges;
   set<Edge> bwd_edges;
+  Node(state_t nodeid) { id = nodeid; }
   bool operator==(Node const &node) const {
     return this->fwd_edges == node.fwd_edges;
   }
@@ -53,6 +56,13 @@ class Automata {
   vector<Node> states;
 
 public:
+    //  0 1 2 3 4 5
+    //
+    //  suppose begin = 100
+    //  100 101 102 103 104 105
+  letter_t replace_input(letter_t begin, unordered_map<letter_t, letter_t> & mp);
+  void appendNode();
+  void appendEdge(Edge e);
   size_t reduce();
   size_t full_reduce();
   bool run(vector<letter_t> word);

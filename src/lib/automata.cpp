@@ -10,7 +10,6 @@ typedef vector<state_t> eq_class;
 // union find algorithm, because union find is used to generate disjoint set, so
 // we can us it.
 
-
 // init
 void init_equivalant(eq_class &classes) {
   for (int i = 0; i < classes.size(); i++) {
@@ -42,7 +41,6 @@ unordered_map<state_t, state_t> finalize_equivalant(eq_class &classes) {
 
 // union
 void add_equivalant(eq_class &classes, state_t i, state_t j) { classes[j] = i; }
-
 
 // collapse states for one step
 size_t Automata::reduce() {
@@ -90,4 +88,13 @@ size_t Automata::full_reduce() {
   return this->states.size();
 }
 
+void Automata::appendNode() {
+  this->states.push_back(Node(this->states.size()));
+}
+
+void Automata::appendEdge(Edge e) {
+  this->states[e.from].fwd_edges.insert(e);
+  this->states[e.to].bwd_edges.insert(e);
+}
+letter_t Automata::replace_input(letter_t begin, unordered_map<letter_t, letter_t> & mp) {}
 } // namespace ta

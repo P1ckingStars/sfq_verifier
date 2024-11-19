@@ -1,5 +1,6 @@
 #include "automata.hpp"
 #include <cstddef>
+#include <map>
 #include <unordered_map>
 
 using namespace std;
@@ -14,6 +15,29 @@ typedef vector<state_t> eq_class;
 void init_equivalant(eq_class &classes) {
   for (int i = 0; i < classes.size(); i++) {
     classes[i] = i;
+  }
+}
+
+void Node::mergeEdge() {
+  map<state_t, Edge> new_edges;
+  for (Edge e : this->fwd_edges) {
+    if (!new_edges.count(e.to)) {
+      new_edges[e.to] = e;
+    } else {
+      for (letter_t act : e.letters) {
+        new_edges[e.to].letters.insert(act);
+      }
+    }
+  }
+  this->fwd_edges.clear();
+  for (auto e : new_edges) {
+    this->fwd_edges.insert(e.second);
+  }
+}
+
+void Automata::mergeEdge() {
+  for (Node n : this->states) {
+    n.mergeEdge();
   }
 }
 
@@ -57,25 +81,20 @@ size_t Automata::reduce() {
   for (int i = 0; i < this->states.size(); i++) {
     Node &node = this->states[i];
     node.id = classes[node.id];
-    set<Edge> new_bwd_edges;
     set<Edge> new_fwd_edges;
-    for (Edge e : node.bwd_edges) {
-      e.to = classes[e.to];
-      e.from = classes[e.from];
-      new_bwd_edges.insert(e);
-    }
+
     for (Edge e : node.fwd_edges) {
       e.to = classes[e.to];
       e.from = classes[e.from];
       new_fwd_edges.insert(e);
     }
-    node.bwd_edges = new_bwd_edges;
     node.fwd_edges = new_fwd_edges;
   }
   for (auto pair : new_mapping) {
     this->states[pair.second] = this->states[pair.first];
   }
   this->states.resize(new_mapping.size());
+  this->mergeEdge();
   return new_mapping.size();
 }
 
@@ -92,12 +111,10 @@ void Automata::appendNode() {
   this->states.push_back(Node(this->states.size()));
 }
 
-void Automata::appendEdge(Edge e) {
-  this->states[e.from].fwd_edges.insert(e);
-  this->states[e.to].bwd_edges.insert(e);
-}
+void Automata::appendEdge(Edge e) { this->states[e.from].fwd_edges.insert(e); }
 
-letter_t Automata::replace_input(letter_t begin, unordered_map<letter_t, letter_t> & mp) {
+letter_t Automata::replace_input(letter_t begin,
+                                 unordered_map<letter_t, letter_t> &mp) {
   for (Node n : this->states) {
     for (Edge edge : n.fwd_edges) {
       unordered_set<letter_t> new_letters;
@@ -116,7 +133,7 @@ letter_t Automata::replace_input(letter_t begin, unordered_map<letter_t, letter_
 
 state_t Automata::next(state_t from, letter_t act) {
   for (Edge edge : this->states[from].fwd_edges) {
-    if (edge.letters.count(act)) 
+    if (edge.letters.count(act))
       return edge.to;
   }
   return STATE_NOT_EXISTS;

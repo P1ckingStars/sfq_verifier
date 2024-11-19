@@ -57,10 +57,22 @@ Automata *PulseCA::to_dfa() {
   while (!q.empty()) {
     auto state = q.front();
     q.pop_front();
-    for (int i = 0; i < this->total_letter; i++) {
+    for (letter_t i = 0; i < this->total_letter; i++) {
+      PulseCAState *next_state;
+      string next_state_query;
+      if ((next_state = this->next(state, i)) &&
+          !ca2dfa.count(next_state_query = next_state->to_str())) {
+        APPEND_STATE(next_state);
+        Edge e;
+        e.from = ca2dfa[state->to_str()];
+        e.to = ca2dfa[next_state_query];
+        e.letters.insert(i);
+        res->appendEdge(e);
+      }
     }
   }
-
+  res->mergeEdge();
+  res->full_reduce();
   return res;
 }
 

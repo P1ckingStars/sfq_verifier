@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <iostream>
 #include <unordered_map>
+#include <variant>
 #include <vector>
 
 namespace ta {
@@ -14,19 +15,24 @@ namespace ta {
 typedef uint32_t automata_id;
 typedef uint32_t channel_id;
 
+struct pulse {
+  automata_id id;
+  letter_t letter;
+  bool operator<(pulse const &p) {
+    return id < p.id || (id == p.id && letter < p.letter);
+  }
+};
 struct PulseChannel {
   channel_id id;
-  automata_id from;
-  automata_id to;
-  letter_t from_act;
-  letter_t to_act;
+  pulse in;
+  set<pulse> out;
+  void replace(vector<unordered_map<letter_t, letter_t>> &mp);
 };
 
 struct PulseCAState {
   vector<state_t> states;
-  vector<bool> channel_states;
   bool operator==(PulseCAState const &s) {
-    return s.states == this->states && channel_states == this->channel_states;
+    return s.states == this->states;
   }
   string to_str();
 };

@@ -131,12 +131,15 @@ letter_t Automata::replace_input(letter_t begin,
   return begin;
 }
 
-state_t Automata::next(state_t from, letter_t act) {
+pair<state_t, letter_t> Automata::next(state_t from, letter_t act) {
   for (Edge edge : this->states[from].fwd_edges) {
     if (edge.letters.count(act))
-      return edge.to;
+      return {edge.to, edge.output};
   }
-  return STATE_NOT_EXISTS;
+  return {STATE_NOT_EXISTS, 0};
+}
+
+bool Automata::run(vector<letter_t> word) {
 }
 
 } // namespace ta

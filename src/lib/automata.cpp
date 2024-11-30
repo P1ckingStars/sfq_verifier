@@ -126,6 +126,11 @@ letter_t Automata::replace_input(letter_t begin,
         new_letters.insert(mp[l]);
       }
       edge.letters = new_letters;
+      if (edge.output != NO_OUTPUT && !mp.count(edge.output)) {
+        mp.insert({edge.output, begin});
+        begin++;
+      }
+      edge.output = mp[edge.output];
     }
   }
   return begin;
@@ -139,7 +144,6 @@ pair<state_t, letter_t> Automata::next(state_t from, letter_t act) {
   return {STATE_NOT_EXISTS, 0};
 }
 
-bool Automata::run(vector<letter_t> word) {
-}
+bool Automata::run(vector<letter_t> word) {}
 
 } // namespace ta

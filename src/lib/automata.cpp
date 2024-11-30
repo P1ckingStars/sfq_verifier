@@ -139,7 +139,16 @@ pair<state_t, letter_t> Automata::next(state_t from, letter_t act) {
   return {STATE_NOT_EXISTS, 0};
 }
 
-bool Automata::run(vector<letter_t> word) {
+bool Automata::run(vector<letter_t> input, vector<letter_t> & full_seqeunce) {
+  state_t s = 0;
+  for (auto letter : input) {
+    full_seqeunce.push_back(letter);
+    auto p = this->next(s, letter);
+    if (p.first == STATE_NOT_EXISTS) return false;
+    s = p.first;
+    if (p.second != NO_OUTPUT) full_seqeunce.push_back(p.second);
+  }
+  return true;
 }
 
 } // namespace ta

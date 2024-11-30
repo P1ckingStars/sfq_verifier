@@ -70,8 +70,8 @@ Automata * AND_GATE() {
     res->appendEdge(Edge(B_ARRIVED, IDLE, CLK, NO_OUTPUT));
     res->appendEdge(Edge(B_ARRIVED, B_ARRIVED, B, NO_OUTPUT));
     res->appendEdge(Edge(A_AND_B_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
-    res->appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, A));
-    res->appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, B));
+    res->appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, A, NO_OUTPUT));
+    res->appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, B, NO_OUTPUT));
     res->appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res->full_reduce();
 

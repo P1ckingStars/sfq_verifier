@@ -41,6 +41,10 @@ PulseCA::PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels)
   for (int i = 0; i < channels_.size(); i++) {
     PulseChannel *c = channels_[i];
     c->replace(input_map);
+    this->letter_in_channel.insert(c->in.letter);
+    for (auto p : c->out) {
+      this->letter_in_channel.insert(p.letter);
+    }
     this->input_channels_[c->in.id][c->in.letter] = c;
   }
   this->total_letter = idx;
@@ -63,6 +67,8 @@ Automata *PulseCA::to_dfa() {
     auto state = q.front();
     q.pop_front();
     for (letter_t i = 0; i < this->total_letter; i++) {
+      if (letter_in_channel.count(i))
+        continue;
       PulseCAState *next_state;
       string next_state_query;
       if ((next_state = this->next(state, i)) &&

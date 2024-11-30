@@ -126,6 +126,11 @@ letter_t Automata::replace_input(letter_t begin,
         new_letters.insert(mp[l]);
       }
       edge.letters = new_letters;
+      if (edge.output != NO_OUTPUT && !mp.count(edge.output)) {
+        mp.insert({edge.output, begin});
+        begin++;
+      }
+      edge.output = mp[edge.output];
     }
   }
   return begin;

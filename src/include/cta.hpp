@@ -31,9 +31,7 @@ struct PulseChannel {
 
 struct PulseCAState {
   vector<state_t> states;
-  bool operator==(PulseCAState const &s) {
-    return s.states == this->states;
-  }
+  bool operator==(PulseCAState const &s) { return s.states == this->states; }
   string to_str();
 };
 
@@ -49,7 +47,7 @@ class PulseCA {
                                  // use the same inputs here, must differentiate
   vector<PulseChannel *> channels_;
   vector<unordered_map<letter_t, PulseChannel *>> input_channels_;
-  vector<unordered_map<letter_t, PulseChannel *>> output_channels_;
+  set<letter_t> letter_in_channel;
   unordered_map<letter_t, automata_id> letter4automata;
   PulseCAState *next(PulseCAState const *state, letter_t act);
 

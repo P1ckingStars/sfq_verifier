@@ -50,7 +50,8 @@ class NAND(SFQ):
 #define CLK 0
 #define A   1
 #define B   2
-#define C   3
+#define FIRE 3
+#define C   4
 
 #define IDLE 0
 #define A_ARRIVED 1
@@ -68,9 +69,9 @@ Automata * AND_GATE() {
     res->appendNode(); // s_3: a_and_b_arrived
     res->appendNode(); // s_4: fire
 
-    res->appendEdge(Edge(IDLE, OUTPUT, CLK));
-    res->appendEdge(Edge(IDLE, A_ARRIVED, A));
-    res->appendEdge(Edge(IDLE, B_ARRIVED, B));
+    res->appendEdge(Edge(IDLE, OUTPUT, FIRE, C));
+    res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
+    res->appendEdge(Edge(IDLE, B_ARRIVED, B, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, A_AND_B_ARRIVED, B));
     res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A));
     res->appendEdge(Edge(A_ARRIVED, OUTPUT, CLK));

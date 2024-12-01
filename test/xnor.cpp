@@ -11,41 +11,44 @@ class XNOR(SFQ):
     inputs = ['a', 'b', 'clk']
     outputs = ['q']
     transitions = [
-        {'id': '0',  'source': 'idle',      'trigger': 'a',   'dest': 'a_arrived'},
-        {'id': '1',  'source': 'idle',      'trigger': 'b',   'dest': 'b_arrived'},
+        {'id': '0',  'source': 'idle',      'trigger': 'a',   'dest': 'A_ARRIVE'},
+        {'id': '1',  'source': 'idle',      'trigger': 'b',   'dest': 'B_ARRIVE'},
         {'id': '2',  'source': 'idle',      'trigger': 'clk', 'dest': 'idle',
          'transition_time': _hold_time, 'past_constraints': {'*': _setup_time},
          'firing': 'q'},
 
         {'id': '3',  'source': 'a_arrived', 'trigger': 'a',   'dest': 'a_arrived'},
-        {'id': '4',  'source': 'a_arrived', 'trigger': 'b',   'dest': 'a_and_b_arrived'},
+        {'id': '4',  'source': 'a_arrived', 'trigger': 'b',   'dest': 'a_and_B_ARRIVE'},
         {'id': '5',  'source': 'a_arrived', 'trigger': 'clk', 'dest': 'idle',
          'transition_time': _hold_time, 'past_constraints': {'*': _setup_time}},
 
-        {'id': '6',  'source': 'b_arrived', 'trigger': 'b',   'dest': 'b_arrived'},
-        {'id': '7',  'source': 'b_arrived', 'trigger': 'a',   'dest': 'a_and_b_arrived'},
-        {'id': '8',  'source': 'b_arrived', 'trigger': 'clk', 'dest': 'idle',
+        {'id': '6',  'source': 'B_ARRIVE', 'trigger': 'b',   'dest': 'B_ARRIVE'},
+        {'id': '7',  'source': 'B_ARRIVE', 'trigger': 'a',   'dest': 'a_and_B_ARRIVE'},
+        {'id': '8',  'source': 'B_ARRIVE', 'trigger': 'clk', 'dest': 'idle',
          'transition_time': _hold_time, 'past_constraints': {'*': _setup_time}},
 
-        {'id': '9',  'source': 'a_and_b_arrived', 'trigger': 'b',   'dest': 'a_and_b_arrived'},
-        {'id': '10', 'source': 'a_and_b_arrived', 'trigger': 'a',   'dest': 'a_and_b_arrived'},
-        {'id': '11', 'source': 'a_and_b_arrived', 'trigger': 'clk', 'dest': 'idle',
+        {'id': '9',  'source': 'a_and_B_ARRIVE', 'trigger': 'b',   'dest': 'a_and_B_ARRIVE'},
+        {'id': '10', 'source': 'a_and_B_ARRIVE', 'trigger': 'a',   'dest': 'a_and_B_ARRIVE'},
+        {'id': '11', 'source': 'a_and_B_ARRIVE', 'trigger': 'clk', 'dest': 'idle',
          'transition_time': _hold_time, 'past_constraints': {'*': _setup_time},
          'firing': 'q'},
     ]
     jjs = 15
     firing_delay = 6.5
 */
+#include "automata.hpp"
+
 #define CLK 0
 #define A   1
 #define B   2
-#define C   3
+#define FIRE 3
+#define C   4
 
 #define IDLE 0
 #define A_ARRIVE 1
 #define B_ARRIVE 2
 #define AB_ARRIVE 3
-#define FIRE 4
+#define OUTPUT 4
 
 using namespace ta;
 
@@ -57,19 +60,19 @@ Automata * XNOR_GATE() {
     res -> appendNode(); // s_3: ab_arrive
     res -> appendNode(); // s_4: fire_c
     
-    res -> appendEdge(Edge(IDLE, OUTPUT, CLK));
-    res -> appendEdge(Edge(IDLE, A_ARRIVED, A));
-    res -> appendEdge(Edge(IDLE, B_ARRIVED, B));
-    res -> appendEdge(Edge(A_ARRIVED, A_ARRIVED, A));
-    res -> appendEdge(Edge(A_ARRIVED, AB_ARRIVE, B));
-    res -> appendEdge(Edge(A_ARRIVED, IDLE, CLK));
-    res -> appendEdge(Edge(B_ARRIVED, B_ARRIVED, B));
-    res -> appendEdge(Edge(B_ARRIVED, AB_ARRIVE, A));
-    res -> appendEdge(Edge(B_ARRIVED, IDLE, CLK));
-    res -> appendEdge(Edge(AB_ARRIVE, OUTPUT, CLK));
-    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, A));
-    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, B));
-    //res -> appendEdge(Edge(OUTPUT, IDLE, C));
+    res -> appendEdge(Edge(IDLE, OUTPUT, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, A_ARRIVE, A, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, B_ARRIVE, B, NO_OUTPUT));
+    res -> appendEdge(Edge(A_ARRIVE, A_ARRIVE, A, NO_OUTPUT));
+    res -> appendEdge(Edge(A_ARRIVE, AB_ARRIVE, B, NO_OUTPUT));
+    res -> appendEdge(Edge(A_ARRIVE, IDLE, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(B_ARRIVE, B_ARRIVE, B, NO_OUTPUT));
+    res -> appendEdge(Edge(B_ARRIVE, AB_ARRIVE, A, NO_OUTPUT));
+    res -> appendEdge(Edge(B_ARRIVE, IDLE, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(AB_ARRIVE, OUTPUT, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, A, NO_OUTPUT));
+    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, B, NO_OUTPUT));
+    res -> appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res -> full_reduce();
     return res;
 }

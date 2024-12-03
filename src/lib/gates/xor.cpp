@@ -40,15 +40,13 @@ class XOR(SFQ):
 #define CLK 0
 #define A   1
 #define B   2
-#define FIRE 3
-#define C   4
+#define C   3
 
 
 #define IDLE 0
 #define A_ARRIVED 1
 #define B_ARRIVED 2
 #define A_AND_B_ARRIVED 3
-#define OUTPUT 4
 
 using namespace ta;
 
@@ -58,20 +56,16 @@ Automata * XOR_GATE() {
     res->appendNode(); // s_1: a_arrive
     res->appendNode(); // s_2: b_arrive
     res->appendNode(); // s_3: ab_arrive
-    res->appendNode(); // s_4: fire_c
+
     res->appendEdge(Edge(IDLE, IDLE, CLK, NO_OUTPUT));
     res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(IDLE, B_ARRIVED, B, NO_OUTPUT));
-    res->appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, IDLE, B, NO_OUTPUT));
-    res->appendEdge(Edge(A_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
-    res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, FIRE, NO_OUTPUT));
+    res->appendEdge(Edge(A_ARRIVED, IDLE, CLK, C));
     res->appendEdge(Edge(B_ARRIVED, B_ARRIVED, B, NO_OUTPUT));
     res->appendEdge(Edge(B_ARRIVED, IDLE, A, NO_OUTPUT));
-    res->appendEdge(Edge(B_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
-    res->appendEdge(Edge(B_ARRIVED, B_ARRIVED, FIRE, NO_OUTPUT));
-    res->appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
+    res->appendEdge(Edge(B_ARRIVED, IDLE, CLK, C));
     res->full_reduce();
     return res;
 }

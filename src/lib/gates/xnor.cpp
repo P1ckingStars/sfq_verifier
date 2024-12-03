@@ -42,14 +42,12 @@ class XNOR(SFQ):
 #define CLK 0
 #define A   1
 #define B   2
-#define FIRE 3
-#define C   4
+#define C   3
 
 #define IDLE 0
 #define A_ARRIVE 1
 #define B_ARRIVE 2
 #define AB_ARRIVE 3
-#define OUTPUT 4
 
 using namespace ta;
 
@@ -59,25 +57,19 @@ Automata * XNOR_GATE() {
     res -> appendNode(); // s_1: a_arrive
     res -> appendNode(); // s_2: b_arrive
     res -> appendNode(); // s_3: ab_arrive
-    res -> appendNode(); // s_4: fire_c
     
-    res -> appendEdge(Edge(IDLE, OUTPUT, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, IDLE, CLK, C));
     res -> appendEdge(Edge(IDLE, A_ARRIVE, A, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, B_ARRIVE, B, NO_OUTPUT));
-    res -> appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(A_ARRIVE, A_ARRIVE, A, NO_OUTPUT));
     res -> appendEdge(Edge(A_ARRIVE, AB_ARRIVE, B, NO_OUTPUT));
     res -> appendEdge(Edge(A_ARRIVE, IDLE, CLK, NO_OUTPUT));
-    res -> appendEdge(Edge(A_ARRIVE, A_ARRIVE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVE, B_ARRIVE, B, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVE, AB_ARRIVE, A, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVE, IDLE, CLK, NO_OUTPUT));
-    res -> appendEdge(Edge(B_ARRIVE, B_ARRIVE, FIRE, NO_OUTPUT));
-    res -> appendEdge(Edge(AB_ARRIVE, OUTPUT, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(AB_ARRIVE, IDLE, CLK, C));
     res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, A, NO_OUTPUT));
     res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, B, NO_OUTPUT));
-    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, FIRE, NO_OUTPUT));
-    res -> appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res -> full_reduce();
     return res;
 }

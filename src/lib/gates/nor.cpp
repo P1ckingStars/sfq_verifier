@@ -34,12 +34,10 @@ class NOR(SFQ):
 #define CLK 0
 #define A   1
 #define B   2
-#define FIRE 3
-#define C   4
+#define C   3
 
 #define IDLE 0
 #define A_OR_B_ARRIVED 1 
-#define OUTPUT 2
 
 using namespace ta;
 
@@ -47,17 +45,13 @@ Automata * NOR_Gate () {
     Automata * res = new Automata();
     res -> appendNode(); //IDLE
     res -> appendNode(); //A_OR_B_ARRIVED
-    res -> appendNode(); //OUTPUT
     
-    res -> appendEdge(Edge(IDLE, OUTPUT, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, IDLE, CLK, C));
     res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, B, NO_OUTPUT));
-    res -> appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, B, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, IDLE, CLK, NO_OUTPUT));
-    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, FIRE, NO_OUTPUT));
-    res -> appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res -> full_reduce();
 
     return res;

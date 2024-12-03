@@ -57,7 +57,6 @@ Automata * AND_GATE() {
     res->appendNode(); // s_1: a_arrived
     res->appendNode(); // s_2: b_arrived
     res->appendNode(); // s_3: a_and_b_arrived
-    res->appendNode(); // s_4: fire
     
     res->appendEdge(Edge(IDLE, IDLE, CLK, NO_OUTPUT));
     res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));

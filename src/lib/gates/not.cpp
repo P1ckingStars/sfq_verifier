@@ -30,13 +30,11 @@ class INV(SFQ):
 
 #define CLK 0
 #define A   1
-#define FIRE 2
-#define C   3
+#define C   2
 
 
 #define IDLE 0
 #define A_ARRIVED 1
-#define OUTPUT 2
 
 using namespace ta;
 
@@ -44,13 +42,12 @@ Automata * NOT_GATE() {
     Automata * res = new Automata();
     res->appendNode(); // s_0
     res->appendNode(); // s_1: a_arrive
+
     res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
-    res->appendEdge(Edge(IDLE, OUTPUT, CLK, NO_OUTPUT));
+    res->appendEdge(Edge(IDLE, IDLE, CLK, C));
     res->appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
-    res->appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, IDLE, CLK, NO_OUTPUT));
-    res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, FIRE, NO_OUTPUT));
     res -> full_reduce();
     return res;
 }

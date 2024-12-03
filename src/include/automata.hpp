@@ -1,13 +1,11 @@
 #ifndef AUTOMATA
 #define AUTOMATA
 
-#include "timed_automata.hpp"
+#include <cstddef>
 #include <cstdint>
-#include <forward_list>
-#include <memory>
+#include <iostream>
+#include <map>
 #include <set>
-#include <unordered_map>
-#include <unordered_set>
 #include <vector>
 
 namespace ta {
@@ -22,8 +20,9 @@ using namespace std;
 struct Edge {
   state_t from;
   state_t to;
-  unordered_set<letter_t> letters;
+  set<letter_t> letters;
   letter_t output;
+  Edge() {}
   Edge(state_t from, state_t to, letter_t l, letter_t output) {
     this->from = from;
     this->to = to;
@@ -32,7 +31,8 @@ struct Edge {
   }
   // definition of equivalant classes
   bool operator==(Edge const &e) const {
-    return this->to == e.to && this->letters == e.letters && this->output == e.output;
+    return this->to == e.to && this->letters == e.letters &&
+           this->output == e.output;
   }
   // provide an operation for c++ standard set to search
   bool operator<(Edge const &e) const {
@@ -47,15 +47,17 @@ struct Edge {
         continue;
       return *my_letter < *e_letter;
     }
-    return this->to < e.to;
+    return this->output < e.output;
   }
 };
 struct Node {
   state_t id;
   set<Edge> fwd_edges;
+  Node() {}
   Node(state_t nodeid) { id = nodeid; }
   bool operator==(Node const &node) const {
-    return this->fwd_edges == node.fwd_edges;
+    return this->fwd_edges.size() == node.fwd_edges.size() &&
+           this->fwd_edges == node.fwd_edges;
   }
   void mergeEdge();
 };
@@ -70,7 +72,8 @@ public:
   //
   //  suppose begin = 100
   //  100 101 102 103 104 105
-  letter_t replace_input(letter_t begin, unordered_map<letter_t, letter_t> &mp);
+  size_t num_states() { return states.size(); }
+  letter_t replace_input(letter_t begin, map<letter_t, letter_t> &mp);
 #define STATE_NOT_EXISTS (1 << 31)
   // return (1 << 31) if not exists
   pair<state_t, letter_t> next(state_t from, letter_t act);
@@ -79,7 +82,19 @@ public:
   void appendEdge(Edge e);
   size_t reduce();
   size_t full_reduce();
-  bool run(vector<letter_t> input, vector<letter_t> & full_seqeunce); 
+  bool run(vector<letter_t> input, vector<letter_t> &full_seqeunce);
+  void print_transition_table() {
+    for (int i = 0; i < states.size(); i++) {
+      cout << "STATE " << i << ": " << endl;
+      for (auto edge : states[i].fwd_edges) {
+        cout << "    ";
+        for (letter_t act : edge.letters) {
+            cout << " | " << act; 
+        }
+        cout << " ==>> " << edge.to << " out: " << edge.output << endl;
+      }
+    }
+  }
 };
 
 } // namespace ta

@@ -13,13 +13,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_compile_options(-g)
 
 add_subdirectory(src/lib)
+add_subdirectory(src/lib/gates)
 
 # add the executable
-add_executable(test1 examples/test1.cpp)
+add_executable(test1 test/test1.cpp)
 
 # link_directories(${PROJECT_SOURCE_DIR}/dependency)
 
-target_link_libraries(test1 TALib)
+target_link_libraries(test1 TALib GateLib)
 
 target_include_directories(test1 PUBLIC
                           "${PROJECT_BINARY_DIR}"

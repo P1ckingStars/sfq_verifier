@@ -65,20 +65,24 @@ CMAKE_BINARY_DIR = /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build
 # The main recursive "all" target.
 all: CMakeFiles/test1.dir/all
 all: src/lib/all
+all: src/lib/gates/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/test1.dir/codegen
 codegen: src/lib/codegen
+codegen: src/lib/gates/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
 preinstall: src/lib/preinstall
+preinstall: src/lib/gates/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/test1.dir/clean
 clean: src/lib/clean
+clean: src/lib/gates/clean
 .PHONY : clean
 
 #=============================================================================
@@ -101,18 +105,38 @@ src/lib/clean: src/lib/CMakeFiles/TALib.dir/clean
 .PHONY : src/lib/clean
 
 #=============================================================================
+# Directory level rules for directory src/lib/gates
+
+# Recursive "all" directory target.
+src/lib/gates/all: src/lib/gates/CMakeFiles/GateLib.dir/all
+.PHONY : src/lib/gates/all
+
+# Recursive "codegen" directory target.
+src/lib/gates/codegen: src/lib/gates/CMakeFiles/GateLib.dir/codegen
+.PHONY : src/lib/gates/codegen
+
+# Recursive "preinstall" directory target.
+src/lib/gates/preinstall:
+.PHONY : src/lib/gates/preinstall
+
+# Recursive "clean" directory target.
+src/lib/gates/clean: src/lib/gates/CMakeFiles/GateLib.dir/clean
+.PHONY : src/lib/gates/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test1.dir
 
 # All Build rule for target.
 CMakeFiles/test1.dir/all: src/lib/CMakeFiles/TALib.dir/all
+CMakeFiles/test1.dir/all: src/lib/gates/CMakeFiles/GateLib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=4,5 "Built target test1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=15,16 "Built target test1"
 .PHONY : CMakeFiles/test1.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 0
 .PHONY : CMakeFiles/test1.dir/rule
@@ -138,12 +162,12 @@ CMakeFiles/test1.dir/clean:
 src/lib/CMakeFiles/TALib.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=1,2,3 "Built target TALib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=10,11,12,13,14 "Built target TALib"
 .PHONY : src/lib/CMakeFiles/TALib.dir/all
 
 # Build rule for subdir invocation for target.
 src/lib/CMakeFiles/TALib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/lib/CMakeFiles/TALib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 0
 .PHONY : src/lib/CMakeFiles/TALib.dir/rule
@@ -161,6 +185,37 @@ src/lib/CMakeFiles/TALib.dir/codegen:
 src/lib/CMakeFiles/TALib.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/clean
 .PHONY : src/lib/CMakeFiles/TALib.dir/clean
+
+#=============================================================================
+# Target rules for target src/lib/gates/CMakeFiles/GateLib.dir
+
+# All Build rule for target.
+src/lib/gates/CMakeFiles/GateLib.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target GateLib"
+.PHONY : src/lib/gates/CMakeFiles/GateLib.dir/all
+
+# Build rule for subdir invocation for target.
+src/lib/gates/CMakeFiles/GateLib.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/lib/gates/CMakeFiles/GateLib.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 0
+.PHONY : src/lib/gates/CMakeFiles/GateLib.dir/rule
+
+# Convenience name for target.
+GateLib: src/lib/gates/CMakeFiles/GateLib.dir/rule
+.PHONY : GateLib
+
+# codegen rule for target.
+src/lib/gates/CMakeFiles/GateLib.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/codegen
+.PHONY : src/lib/gates/CMakeFiles/GateLib.dir/codegen
+
+# clean rule for target.
+src/lib/gates/CMakeFiles/GateLib.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/clean
+.PHONY : src/lib/gates/CMakeFiles/GateLib.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

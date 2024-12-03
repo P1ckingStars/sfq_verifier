@@ -45,6 +45,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/cmake_install.cmake")
+  include("/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates/cmake_install.cmake")
 
 endif()
 

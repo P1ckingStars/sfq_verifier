@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGateLib.a CMakeFiles/GateLib.dir/wire.cpp.o CMakeFiles/GateLib.dir/and.cpp.o CMakeFiles/GateLib.dir/or.cpp.o CMakeFiles/GateLib.dir/clk.cpp.o CMakeFiles/GateLib.dir/nand.cpp.o CMakeFiles/GateLib.dir/nor.cpp.o CMakeFiles/GateLib.dir/xor.cpp.o CMakeFiles/GateLib.dir/xnor.cpp.o
+/usr/bin/ranlib libGateLib.a

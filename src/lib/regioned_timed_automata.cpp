@@ -81,7 +81,7 @@ void ClockState::set_zero(unordered_set<clock_id> const &clock) {
 
 inline ClockState *
 clock_state_query(ClockState *clk,
-                  unordered_map<string, ClockState *> &str2clk) {
+                  map<string, ClockState *> &str2clk) {
   string q = clk->to_string();
   if (str2clk.count(q)) {
     delete clk;
@@ -93,7 +93,7 @@ clock_state_query(ClockState *clk,
 
 inline TimedState const *
 timed_state_query(TimedState *ts,
-                  unordered_map<string, timed_state_id> &str2sid,
+                  map<string, timed_state_id> &str2sid,
                   vector<TimedState const *> &states) {
   string q = ts->to_string();
   if (str2sid.count(q)) {
@@ -108,7 +108,7 @@ timed_state_query(TimedState *ts,
 RegionTransitionTable::RegionTransitionTable(
     TransitionTable *transition_table) {
   this->num_clock = transition_table->num_clocks;
-  unordered_map<string, ClockState *> str2clk;
+  map<string, ClockState *> str2clk;
   TimedState *initial_state = new TimedState();
   ClockState *zero_clk_state = new ClockState();
 

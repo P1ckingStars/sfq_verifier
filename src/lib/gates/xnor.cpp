@@ -37,6 +37,7 @@ class XNOR(SFQ):
     firing_delay = 6.5
 */
 #include "automata.hpp"
+#include "gates.hpp"
 
 #define CLK 0
 #define A   1
@@ -63,15 +64,19 @@ Automata * XNOR_GATE() {
     res -> appendEdge(Edge(IDLE, OUTPUT, CLK, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, A_ARRIVE, A, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, B_ARRIVE, B, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(A_ARRIVE, A_ARRIVE, A, NO_OUTPUT));
     res -> appendEdge(Edge(A_ARRIVE, AB_ARRIVE, B, NO_OUTPUT));
     res -> appendEdge(Edge(A_ARRIVE, IDLE, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(A_ARRIVE, A_ARRIVE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVE, B_ARRIVE, B, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVE, AB_ARRIVE, A, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVE, IDLE, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(B_ARRIVE, B_ARRIVE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(AB_ARRIVE, OUTPUT, CLK, NO_OUTPUT));
     res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, A, NO_OUTPUT));
     res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, B, NO_OUTPUT));
+    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res -> full_reduce();
     return res;

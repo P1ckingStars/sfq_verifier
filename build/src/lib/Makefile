@@ -130,6 +130,54 @@ TALib/fast:
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/build
 .PHONY : TALib/fast
 
+automata.o: automata.cpp.o
+.PHONY : automata.o
+
+# target to build an object file
+automata.cpp.o:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/automata.cpp.o
+.PHONY : automata.cpp.o
+
+automata.i: automata.cpp.i
+.PHONY : automata.i
+
+# target to preprocess a source file
+automata.cpp.i:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/automata.cpp.i
+.PHONY : automata.cpp.i
+
+automata.s: automata.cpp.s
+.PHONY : automata.s
+
+# target to generate assembly for a file
+automata.cpp.s:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/automata.cpp.s
+.PHONY : automata.cpp.s
+
+cta.o: cta.cpp.o
+.PHONY : cta.o
+
+# target to build an object file
+cta.cpp.o:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/cta.cpp.o
+.PHONY : cta.cpp.o
+
+cta.i: cta.cpp.i
+.PHONY : cta.i
+
+# target to preprocess a source file
+cta.cpp.i:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/cta.cpp.i
+.PHONY : cta.cpp.i
+
+cta.s: cta.cpp.s
+.PHONY : cta.s
+
+# target to generate assembly for a file
+cta.cpp.s:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/cta.cpp.s
+.PHONY : cta.cpp.s
+
 regioned_timed_automata.o: regioned_timed_automata.cpp.o
 .PHONY : regioned_timed_automata.o
 
@@ -187,6 +235,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TALib"
+	@echo "... automata.o"
+	@echo "... automata.i"
+	@echo "... automata.s"
+	@echo "... cta.o"
+	@echo "... cta.i"
+	@echo "... cta.s"
 	@echo "... regioned_timed_automata.o"
 	@echo "... regioned_timed_automata.i"
 	@echo "... regioned_timed_automata.s"

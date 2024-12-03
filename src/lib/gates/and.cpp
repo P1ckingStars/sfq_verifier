@@ -37,18 +37,17 @@ class AND(SFQ):
 */
 
 #include "automata.hpp"
+#include "gates.hpp"
 
 #define CLK 0
 #define A   1
 #define B   2
-#define FIRE 3
-#define C   4
+#define C   3
 
 #define IDLE 0
 #define A_ARRIVED 1
 #define B_ARRIVED 2
 #define A_AND_B_ARRIVED 3
-#define OUTPUT 4
 
 using namespace ta;
 
@@ -69,10 +68,9 @@ Automata * AND_GATE() {
     res->appendEdge(Edge(B_ARRIVED, A_AND_B_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(B_ARRIVED, IDLE, CLK, NO_OUTPUT));
     res->appendEdge(Edge(B_ARRIVED, B_ARRIVED, B, NO_OUTPUT));
-    res->appendEdge(Edge(A_AND_B_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
+    res->appendEdge(Edge(A_AND_B_ARRIVED, IDLE, CLK, C));
     res->appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, B, NO_OUTPUT));
-    res->appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res->full_reduce();
 
     return res;

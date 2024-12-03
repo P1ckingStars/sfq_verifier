@@ -142,29 +142,42 @@ TALib/fast:
 	$(MAKE) $(MAKESILENT) -f src/lib/CMakeFiles/TALib.dir/build.make src/lib/CMakeFiles/TALib.dir/build
 .PHONY : TALib/fast
 
-examples/test1.o: examples/test1.cpp.o
-.PHONY : examples/test1.o
+#=============================================================================
+# Target rules for targets named GateLib
+
+# Build rule for target.
+GateLib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GateLib
+.PHONY : GateLib
+
+# fast build rule for target.
+GateLib/fast:
+	$(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/build
+.PHONY : GateLib/fast
+
+test/test1.o: test/test1.cpp.o
+.PHONY : test/test1.o
 
 # target to build an object file
-examples/test1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/examples/test1.cpp.o
-.PHONY : examples/test1.cpp.o
+test/test1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/test/test1.cpp.o
+.PHONY : test/test1.cpp.o
 
-examples/test1.i: examples/test1.cpp.i
-.PHONY : examples/test1.i
+test/test1.i: test/test1.cpp.i
+.PHONY : test/test1.i
 
 # target to preprocess a source file
-examples/test1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/examples/test1.cpp.i
-.PHONY : examples/test1.cpp.i
+test/test1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/test/test1.cpp.i
+.PHONY : test/test1.cpp.i
 
-examples/test1.s: examples/test1.cpp.s
-.PHONY : examples/test1.s
+test/test1.s: test/test1.cpp.s
+.PHONY : test/test1.s
 
 # target to generate assembly for a file
-examples/test1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/examples/test1.cpp.s
-.PHONY : examples/test1.cpp.s
+test/test1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/test/test1.cpp.s
+.PHONY : test/test1.cpp.s
 
 # Help Target
 help:
@@ -174,11 +187,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... GateLib"
 	@echo "... TALib"
 	@echo "... test1"
-	@echo "... examples/test1.o"
-	@echo "... examples/test1.i"
-	@echo "... examples/test1.s"
+	@echo "... test/test1.o"
+	@echo "... test/test1.i"
+	@echo "... test/test1.s"
 .PHONY : help
 
 

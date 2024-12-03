@@ -1,15 +1,16 @@
 
 #include "automata.hpp"
+#include "gates.hpp"
 
 #define CLK 0
 #define FIRE 1
-#define A 0
-#define CLK_STATE 1
-#define FIRE_STATE 2
+#define A 2
+#define CLK_STATE 0
+#define FIRE_STATE 1
 
 using namespace ta;
 
-Automata *AND_GATE() {
+Automata * CLK_UNIT() {
   Automata *res = new Automata();
   res->appendNode(); // s_0: idle
   res->appendNode(); // s_1: a_arrived

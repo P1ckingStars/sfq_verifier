@@ -25,6 +25,7 @@ class OR(SFQ):
 */
 
 #include "automata.hpp"
+#include "gates.hpp"
 
 #define CLK 0
 #define A   1
@@ -47,10 +48,13 @@ Automata * OR_Gate () {
     res -> appendEdge(Edge(IDLE, IDLE, CLK, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, B, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, B, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
-    res.full_reduce();
+    res -> full_reduce();
     
+    return res;
 }

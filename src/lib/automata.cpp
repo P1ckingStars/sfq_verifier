@@ -1,7 +1,7 @@
 #include "automata.hpp"
 #include <cstddef>
+#include <iostream>
 #include <map>
-#include <unordered_map>
 
 using namespace std;
 namespace ta {
@@ -19,13 +19,21 @@ void init_equivalant(eq_class &classes) {
 }
 
 void Node::mergeEdge() {
-  map<state_t, Edge> new_edges;
+  struct edge_cmp {
+    state_t to;
+    letter_t out;
+    bool operator<(edge_cmp const &p) const {
+      return this->to < p.to || (this->to == p.to && this->out < p.out);
+    }
+  };
+  map<edge_cmp, Edge> new_edges;
   for (Edge e : this->fwd_edges) {
-    if (!new_edges.count(e.to)) {
-      new_edges[e.to] = e;
+    edge_cmp idx = {e.to, e.output};
+    if (!new_edges.count(idx)) {
+      new_edges[idx] = e;
     } else {
       for (letter_t act : e.letters) {
-        new_edges[e.to].letters.insert(act);
+        new_edges[idx].letters.insert(act);
       }
     }
   }
@@ -47,11 +55,11 @@ state_t finalize(eq_class &classes, int i) {
 }
 
 // make a map from 1 to k for k equivalant classes
-unordered_map<state_t, state_t> finalize_equivalant(eq_class &classes) {
+map<state_t, state_t> finalize_equivalant(eq_class &classes) {
   for (int i = 0; i < classes.size(); i++) {
     classes[i] = finalize(classes, i);
   }
-  unordered_map<state_t, state_t> new_mapping;
+  map<state_t, state_t> new_mapping;
   state_t new_state = 0;
   for (state_t i = 0; i < classes.size(); i++) {
     if (classes[i] == i)
@@ -68,10 +76,11 @@ void add_equivalant(eq_class &classes, state_t i, state_t j) { classes[j] = i; }
 
 // collapse states for one step
 size_t Automata::reduce() {
+  cout << "reduce" << endl;
   eq_class classes(this->states.size());
   init_equivalant(classes);
   for (int i = 0; i < this->states.size() - 1; i++) {
-    for (int j = 0; i < this->states.size(); j++) {
+    for (int j = 0; j < this->states.size(); j++) {
       if (this->states[i] == this->states[j]) {
         add_equivalant(classes, i, j);
       }
@@ -113,12 +122,13 @@ void Automata::appendNode() {
 
 void Automata::appendEdge(Edge e) { this->states[e.from].fwd_edges.insert(e); }
 
-letter_t Automata::replace_input(letter_t begin,
-                                 unordered_map<letter_t, letter_t> &mp) {
-  for (Node n : this->states) {
-    for (Edge edge : n.fwd_edges) {
-      unordered_set<letter_t> new_letters;
-      for (letter_t l : edge.letters) {
+letter_t Automata::replace_input(letter_t begin, map<letter_t, letter_t> &mp) {
+  for (int i = 0; i < states.size(); i++) {
+    set<Edge> new_edges;
+    for (Edge e : this->states[i].fwd_edges) {
+      Edge edge = e;
+      set<letter_t> new_letters;
+      for (letter_t l : e.letters) {
         if (!mp.count(l)) {
           mp.insert({l, begin});
           begin++;
@@ -126,12 +136,16 @@ letter_t Automata::replace_input(letter_t begin,
         new_letters.insert(mp[l]);
       }
       edge.letters = new_letters;
-      if (edge.output != NO_OUTPUT && !mp.count(edge.output)) {
-        mp.insert({edge.output, begin});
-        begin++;
+      if (e.output != NO_OUTPUT) {
+        if (!mp.count(e.output)) {
+          mp.insert({e.output, begin});
+          begin++;
+        }
+        edge.output = mp[edge.output];
       }
-      edge.output = mp[edge.output];
+      new_edges.insert(edge);
     }
+    this->states[i].fwd_edges = new_edges;
   }
   return begin;
 }
@@ -144,14 +158,16 @@ pair<state_t, letter_t> Automata::next(state_t from, letter_t act) {
   return {STATE_NOT_EXISTS, 0};
 }
 
-bool Automata::run(vector<letter_t> input, vector<letter_t> & full_seqeunce) {
+bool Automata::run(vector<letter_t> input, vector<letter_t> &full_seqeunce) {
   state_t s = 0;
   for (auto letter : input) {
     full_seqeunce.push_back(letter);
     auto p = this->next(s, letter);
-    if (p.first == STATE_NOT_EXISTS) return false;
+    if (p.first == STATE_NOT_EXISTS)
+      return false;
     s = p.first;
-    if (p.second != NO_OUTPUT) full_seqeunce.push_back(p.second);
+    if (p.second != NO_OUTPUT)
+      full_seqeunce.push_back(p.second);
   }
   return true;
 }

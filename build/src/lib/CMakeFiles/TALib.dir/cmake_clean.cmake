@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/TALib.dir/automata.cpp.o"
+  "CMakeFiles/TALib.dir/automata.cpp.o.d"
+  "CMakeFiles/TALib.dir/cta.cpp.o"
+  "CMakeFiles/TALib.dir/cta.cpp.o.d"
   "CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o"
   "CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o.d"
   "CMakeFiles/TALib.dir/timed_automata.cpp.o"

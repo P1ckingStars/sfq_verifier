@@ -29,6 +29,7 @@ class NOR(SFQ):
 */
 
 #include "automata.hpp"
+#include "gates.hpp"
 
 #define CLK 0
 #define A   1
@@ -42,7 +43,7 @@ class NOR(SFQ):
 
 using namespace ta;
 
-Automata * OR_Gate () {
+Automata * NOR_Gate () {
     Automata * res = new Automata();
     res -> appendNode(); //IDLE
     res -> appendNode(); //A_OR_B_ARRIVED
@@ -51,9 +52,13 @@ Automata * OR_Gate () {
     res -> appendEdge(Edge(IDLE, OUTPUT, CLK, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, B, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, B, NO_OUTPUT));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, IDLE, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
-    res.full_reduce();
+    res -> full_reduce();
+
+    return res;
 }

@@ -6,6 +6,8 @@
 add_compile_options(-g)
 
 add_library(TALib
+    automata.cpp
+    cta.cpp
     timed_automata.cpp
     regioned_timed_automata.cpp)
 

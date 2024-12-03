@@ -72,10 +72,38 @@ include src/lib/CMakeFiles/TALib.dir/flags.make
 src/lib/CMakeFiles/TALib.dir/codegen:
 .PHONY : src/lib/CMakeFiles/TALib.dir/codegen
 
+src/lib/CMakeFiles/TALib.dir/automata.cpp.o: src/lib/CMakeFiles/TALib.dir/flags.make
+src/lib/CMakeFiles/TALib.dir/automata.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp
+src/lib/CMakeFiles/TALib.dir/automata.cpp.o: src/lib/CMakeFiles/TALib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/lib/CMakeFiles/TALib.dir/automata.cpp.o"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/CMakeFiles/TALib.dir/automata.cpp.o -MF CMakeFiles/TALib.dir/automata.cpp.o.d -o CMakeFiles/TALib.dir/automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp
+
+src/lib/CMakeFiles/TALib.dir/automata.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TALib.dir/automata.cpp.i"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp > CMakeFiles/TALib.dir/automata.cpp.i
+
+src/lib/CMakeFiles/TALib.dir/automata.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TALib.dir/automata.cpp.s"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp -o CMakeFiles/TALib.dir/automata.cpp.s
+
+src/lib/CMakeFiles/TALib.dir/cta.cpp.o: src/lib/CMakeFiles/TALib.dir/flags.make
+src/lib/CMakeFiles/TALib.dir/cta.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/cta.cpp
+src/lib/CMakeFiles/TALib.dir/cta.cpp.o: src/lib/CMakeFiles/TALib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/lib/CMakeFiles/TALib.dir/cta.cpp.o"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/CMakeFiles/TALib.dir/cta.cpp.o -MF CMakeFiles/TALib.dir/cta.cpp.o.d -o CMakeFiles/TALib.dir/cta.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/cta.cpp
+
+src/lib/CMakeFiles/TALib.dir/cta.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TALib.dir/cta.cpp.i"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/cta.cpp > CMakeFiles/TALib.dir/cta.cpp.i
+
+src/lib/CMakeFiles/TALib.dir/cta.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TALib.dir/cta.cpp.s"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/cta.cpp -o CMakeFiles/TALib.dir/cta.cpp.s
+
 src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.o: src/lib/CMakeFiles/TALib.dir/flags.make
 src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/timed_automata.cpp
 src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.o: src/lib/CMakeFiles/TALib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.o"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.o -MF CMakeFiles/TALib.dir/timed_automata.cpp.o.d -o CMakeFiles/TALib.dir/timed_automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/timed_automata.cpp
 
 src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.i: cmake_force
@@ -89,7 +117,7 @@ src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.s: cmake_force
 src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o: src/lib/CMakeFiles/TALib.dir/flags.make
 src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/regioned_timed_automata.cpp
 src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o: src/lib/CMakeFiles/TALib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o -MF CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o.d -o CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/regioned_timed_automata.cpp
 
 src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.i: cmake_force
@@ -102,17 +130,21 @@ src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.s: cmake_force
 
 # Object files for target TALib
 TALib_OBJECTS = \
+"CMakeFiles/TALib.dir/automata.cpp.o" \
+"CMakeFiles/TALib.dir/cta.cpp.o" \
 "CMakeFiles/TALib.dir/timed_automata.cpp.o" \
 "CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o"
 
 # External object files for target TALib
 TALib_EXTERNAL_OBJECTS =
 
+src/lib/libTALib.a: src/lib/CMakeFiles/TALib.dir/automata.cpp.o
+src/lib/libTALib.a: src/lib/CMakeFiles/TALib.dir/cta.cpp.o
 src/lib/libTALib.a: src/lib/CMakeFiles/TALib.dir/timed_automata.cpp.o
 src/lib/libTALib.a: src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o
 src/lib/libTALib.a: src/lib/CMakeFiles/TALib.dir/build.make
 src/lib/libTALib.a: src/lib/CMakeFiles/TALib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libTALib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libTALib.a"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && $(CMAKE_COMMAND) -P CMakeFiles/TALib.dir/cmake_clean_target.cmake
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TALib.dir/link.txt --verbose=$(VERBOSE)
 

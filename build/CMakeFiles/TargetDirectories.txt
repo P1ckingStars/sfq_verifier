@@ -4,3 +4,6 @@
 /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/CMakeFiles/TALib.dir
 /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/CMakeFiles/edit_cache.dir
 /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/CMakeFiles/rebuild_cache.dir
+/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates/CMakeFiles/GateLib.dir
+/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates/CMakeFiles/edit_cache.dir
+/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates/CMakeFiles/rebuild_cache.dir

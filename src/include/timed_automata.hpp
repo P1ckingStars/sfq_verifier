@@ -3,8 +3,8 @@
 
 #include <cmath>
 #include <cstdint>
+#include <map>
 #include <set>
-#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -63,7 +63,7 @@ struct TimedEdge {
     state_id from_state;
     state_id to_state;
     set<input_id> inputs;
-    unordered_map<int, Constraints *> constraints;
+    map<int, Constraints *> constraints;
     vector<int> clocks;
 };
 

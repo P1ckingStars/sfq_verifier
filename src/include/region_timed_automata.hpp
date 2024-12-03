@@ -35,9 +35,9 @@ typedef int timed_state_id;
 class RegionTransitionTable {
   int num_inputs;
   int num_clock;
-  vector<unordered_map<input_id, timed_state_id>> graph_;
+  vector<map<input_id, timed_state_id>> graph_;
   vector<TimedState const *> states_;
-  unordered_map<string, timed_state_id> state2id_;
+  map<string, timed_state_id> state2id_;
   RegionTransitionTable(TransitionTable *transition_table);
 };
 

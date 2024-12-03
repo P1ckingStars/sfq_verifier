@@ -26,6 +26,7 @@ class INV(SFQ):
 
 
 #include "automata.hpp"
+#include "gates.hpp"
 
 #define CLK 0
 #define A   1
@@ -45,9 +46,11 @@ Automata * NOT_GATE() {
     res->appendNode(); // s_1: a_arrive
     res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(IDLE, OUTPUT, CLK, NO_OUTPUT));
+    res->appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res->appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, IDLE, CLK, NO_OUTPUT));
-    res.full_reduce();
+    res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, FIRE, NO_OUTPUT));
+    res -> full_reduce();
     return res;
 }

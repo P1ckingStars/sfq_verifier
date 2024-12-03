@@ -1,9 +1,21 @@
 [
 {
   "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build",
-  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/test1.dir/examples/test1.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/examples/test1.cpp",
-  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/examples/test1.cpp",
-  "output": "CMakeFiles/test1.dir/examples/test1.cpp.o"
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/test1.dir/test/test1.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/test/test1.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/test/test1.cpp",
+  "output": "CMakeFiles/test1.dir/test/test1.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp",
+  "output": "src/lib/CMakeFiles/TALib.dir/automata.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/cta.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/cta.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/cta.cpp",
+  "output": "src/lib/CMakeFiles/TALib.dir/cta.cpp.o"
 },
 {
   "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib",
@@ -16,5 +28,53 @@
   "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/regioned_timed_automata.cpp",
   "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/regioned_timed_automata.cpp",
   "output": "src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/wire.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/wire.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/wire.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/wire.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/and.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/and.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/and.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/and.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/or.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/or.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/or.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/clk.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/clk.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/clk.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/nand.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/nand.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/nand.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/nor.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/nor.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/nor.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/xor.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/xor.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/xor.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/xnor.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/xnor.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/xnor.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.o"
 }
 ]

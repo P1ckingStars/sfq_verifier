@@ -35,6 +35,7 @@ class XOR(SFQ):
     firing_delay = 6.5
 */
 #include "automata.hpp"
+#include "gates.hpp"
 
 #define CLK 0
 #define A   1
@@ -51,7 +52,7 @@ class XOR(SFQ):
 
 using namespace ta;
 
-Automata * AND_GATE() {
+Automata * XOR_GATE() {
     Automata * res = new Automata();
     res->appendNode(); // s_0
     res->appendNode(); // s_1: a_arrive
@@ -61,12 +62,15 @@ Automata * AND_GATE() {
     res->appendEdge(Edge(IDLE, IDLE, CLK, NO_OUTPUT));
     res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(IDLE, B_ARRIVED, B, NO_OUTPUT));
+    res->appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, IDLE, B, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
+    res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, FIRE, NO_OUTPUT));
     res->appendEdge(Edge(B_ARRIVED, B_ARRIVED, B, NO_OUTPUT));
     res->appendEdge(Edge(B_ARRIVED, IDLE, A, NO_OUTPUT));
     res->appendEdge(Edge(B_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
+    res->appendEdge(Edge(B_ARRIVED, B_ARRIVED, FIRE, NO_OUTPUT));
     res->appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res->full_reduce();
     return res;

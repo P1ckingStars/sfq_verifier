@@ -16,7 +16,7 @@ string PulseCAState::to_str() {
 
   return ss.str();
 }
-void PulseChannel::replace(vector<unordered_map<letter_t, letter_t>> &mp) {
+void PulseChannel::replace(vector<map<letter_t, letter_t>> &mp) {
   this->in.letter = mp[this->in.id][this->in.letter];
   set<pulse> new_out;
   for (auto p : this->out) {
@@ -28,7 +28,7 @@ void PulseChannel::replace(vector<unordered_map<letter_t, letter_t>> &mp) {
 PulseCA::PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels)
     : automatas_(automata), channels_(channels) {
   int idx = 0;
-  vector<unordered_map<letter_t, letter_t>> input_map(automatas_.size());
+  vector<map<letter_t, letter_t>> input_map(automatas_.size());
   for (int i = 0; i < automata.size(); i++) {
     int prev_idx = idx;
     idx = automatas_[i]->replace_input(idx, input_map[i]);
@@ -36,8 +36,13 @@ PulseCA::PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels)
       letter4automata[k] = i;
     }
   }
+  for (automata_id i = 0; i < input_map.size(); i++) {
+    for (auto p : input_map[i]) {
+      this->letter_map[p.second] = {i, p.first};
+    }
+  }
   this->input_channels_ =
-      vector<unordered_map<letter_t, PulseChannel *>>(automatas_.size());
+      vector<map<letter_t, PulseChannel *>>(automatas_.size());
   for (int i = 0; i < channels_.size(); i++) {
     PulseChannel *c = channels_[i];
     c->replace(input_map);
@@ -63,35 +68,45 @@ Automata *PulseCA::to_dfa() {
   unordered_map<string, state_t> ca2dfa;
   deque<PulseCAState *> q;
   APPEND_STATE(init_state);
+  map<set<letter_t>, letter_t> mp;
   while (!q.empty()) {
     auto state = q.front();
     q.pop_front();
     for (letter_t i = 0; i < this->total_letter; i++) {
       if (letter_in_channel.count(i))
         continue;
+      cout << "state: " << ca2dfa[state->to_str()] << " try act " << i << endl;
       PulseCAState *next_state;
+      set<letter_t> output;
       string next_state_query;
-      if ((next_state = this->next(state, i)) &&
-          !ca2dfa.count(next_state_query = next_state->to_str())) {
-        APPEND_STATE(next_state);
-        Edge e(ca2dfa[state->to_str()], ca2dfa[next_state_query], i, NO_OUTPUT);
+      if (!!(next_state = this->next(state, i, output))) {
+        if (!ca2dfa.count(next_state_query = next_state->to_str())) {
+          APPEND_STATE(next_state);
+        }
+        letter_t edge_out = NO_OUTPUT;
+        if (!output.empty()) {
+          if (!mp.count(output)) {
+            mp.insert({output, mp.size()});
+          }
+          edge_out = mp[output] + letter_map.size();
+        }
+        Edge e(ca2dfa[state->to_str()], ca2dfa[next_state_query], i, edge_out);
         res->appendEdge(e);
       }
     }
   }
-  res->mergeEdge();
-  res->full_reduce();
   return res;
 }
 
-PulseCAState *PulseCA::next(PulseCAState const *state, letter_t act) {
+PulseCAState *PulseCA::next(PulseCAState const *state, letter_t act,
+                            set<letter_t> &output) {
   automata_id a_id = this->letter4automata[act];
   pair<state_t, letter_t> n_state;
   deque<pulse> pulses;
   vector<bool> visited(this->automatas_.size());
 #define GO_VISIT(p)                                                            \
   {                                                                            \
-    visited[a_id] = true;                                                      \
+    visited[p.id] = true;                                                      \
     pulses.push_back(p);                                                       \
   }
   pulse init_pulse = {a_id, act};
@@ -101,24 +116,32 @@ PulseCAState *PulseCA::next(PulseCAState const *state, letter_t act) {
   while (!pulses.empty()) {
     pulse p = pulses.front();
     pulses.pop_front();
-    if ((n_state = automatas_[p.id]->next(state->states[a_id], act)).first !=
-        STATE_NOT_EXISTS) {
-      new_state->states[a_id] = n_state.first;
-      if (n_state.second != NO_OUTPUT &&
-          this->input_channels_[a_id].count(n_state.second)) {
-        for (auto new_p : this->input_channels_[a_id][n_state.second]->out) {
-          if (visited[new_p.id]) {
-            delete new_state;
-            return nullptr;
+    if ((n_state = automatas_[p.id]->next(state->states[p.id], p.letter))
+            .first != STATE_NOT_EXISTS) {
+      new_state->states[p.id] = n_state.first;
+      if (n_state.second != NO_OUTPUT) {
+        if (this->input_channels_[p.id].count(n_state.second)) {
+          for (auto new_p : this->input_channels_[p.id][n_state.second]->out) {
+            if (visited[new_p.id]) {
+              delete new_state;
+              cout << "ERROR: loop" << endl;
+              return nullptr;
+            }
+            cout << "signal propagate " << new_p.id << " " << new_p.letter
+                 << endl;
+            pulses.push_back(new_p);
           }
-          pulses.push_back(new_p);
+        } else {
+          output.insert(n_state.second);
         }
       }
     } else {
       delete new_state;
+      cout << "ERROR: state not exists" << endl;
       return nullptr;
     }
   }
+  cout << "SUCCEED" << endl;
   return new_state;
 } // namespace ta
 

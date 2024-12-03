@@ -46,6 +46,7 @@ class NAND(SFQ):
 
 
 #include "automata.hpp"
+#include "gates.hpp"
 
 #define CLK 0
 #define A   1
@@ -61,7 +62,7 @@ class NAND(SFQ):
 
 using namespace ta;
 
-Automata * AND_GATE() {
+Automata * NAND_GATE() {
     Automata * res = new Automata();
     res -> appendNode(); // s_0: idle
     res -> appendNode(); // s_1: a_arrived
@@ -72,15 +73,19 @@ Automata * AND_GATE() {
     res -> appendEdge(Edge(IDLE, OUTPUT, CLK, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(IDLE, B_ARRIVED, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_ARRIVED, A_AND_B_ARRIVED, B));
+    res -> appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT)); 
+    res -> appendEdge(Edge(A_ARRIVED, A_AND_B_ARRIVED, B, NO_OUTPUT));
     res -> appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(A_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(A_ARRIVED, A_ARRIVED, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVED, A_AND_B_ARRIVED, A, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVED, OUTPUT, CLK, NO_OUTPUT));
     res -> appendEdge(Edge(B_ARRIVED, B_ARRIVED, B, NO_OUTPUT));
+    res -> appendEdge(Edge(B_ARRIVED, B_ARRIVED, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(A_AND_B_ARRIVED, IDLE, CLK, NO_OUTPUT));
     res -> appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, A, NO_OUTPUT)); 
     res -> appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, B, NO_OUTPUT));
+    res -> appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, FIRE, NO_OUTPUT));
     res -> appendEdge(Edge(OUTPUT, IDLE, FIRE, C));
     res -> full_reduce();
 

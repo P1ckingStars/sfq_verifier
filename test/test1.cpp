@@ -11,7 +11,7 @@ using namespace std;
 
 void and_test1(Automata * automata) {
 
-    letter_t arr[] = {0, 1, 2, 0, 3, 1, 0, 3, 1, 2, 3, 0, 3, 2, 1, 0, 3};
+    letter_t arr[] = {0, 1, 2, 0, 1, 0, 1, 2, 0, 2, 1, 0};
     vector<letter_t> in_seq = {arr, arr + (sizeof(arr)/sizeof(letter_t))};
     vector<letter_t> out_seq;
     automata->run(in_seq, out_seq);

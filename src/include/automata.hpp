@@ -56,8 +56,24 @@ struct Node {
   Node() {}
   Node(state_t nodeid) { id = nodeid; }
   bool operator==(Node const &node) const {
-    return this->fwd_edges.size() == node.fwd_edges.size() &&
-           this->fwd_edges == node.fwd_edges;
+    if (this->fwd_edges.size() != node.fwd_edges.size()) {
+      return false;
+    }
+    set<Edge> my_edges;
+    set<Edge> node_edges;
+    for (auto e : fwd_edges) {
+      if (e.to == node.id) {
+        e.to = this->id;
+      }
+      my_edges.insert(e);
+    }
+    for (auto e : node.fwd_edges) {
+      if (e.to == node.id) {
+        e.to = this->id;
+      }
+      node_edges.insert(e);
+    }
+    return my_edges == node_edges;
   }
   void mergeEdge();
 };
@@ -89,7 +105,7 @@ public:
       for (auto edge : states[i].fwd_edges) {
         cout << "    ";
         for (letter_t act : edge.letters) {
-            cout << " | " << act; 
+          cout << " | " << act;
         }
         cout << " ==>> " << edge.to << " out: " << edge.output << endl;
       }

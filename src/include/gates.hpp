@@ -14,6 +14,7 @@ Automata *CLK_UNIT();
 Automata *NAND_GATE();
 Automata *NOR_GATE();
 Automata *NOT_GATE();
+Automata *DF_GATE();
 Automata *OR_GATE();
 Automata *XNOR_GATE();
 Automata *XOR_GATE();
@@ -94,15 +95,25 @@ struct NOTGate : GateInterface {
   pulse C() { return {id, 2}; }
 };
 
+struct DFGate : GateInterface {
+  DFGate(automata_id id) : GateInterface(id) { this->my_obj = DF_GATE(); }
+  pulse CLK() { return {id, 0}; }
+  pulse A() { return {id, 1}; }
+  pulse C() { return {id, 2}; }
+};
 class ConnectAutomataBuilder {
   vector<Automata *> automatas;
   vector<GateInterface> Gates;
+  set<pulse> outputs;
   vector<PulseChannel *> channels;
   vector<pair<pulse, pulse>> edge;
+
+public:
   ANDGate makeANDGate() {
     auto res = ANDGate(this->automatas.size());
     this->automatas.push_back(res.my_obj);
     Gates.push_back(res);
+    outputs.insert(res.C());
     return res;
   }
 
@@ -110,6 +121,7 @@ class ConnectAutomataBuilder {
     auto res = NANDGate(this->automatas.size());
     this->automatas.push_back(res.my_obj);
     Gates.push_back(res);
+    outputs.insert(res.C());
     return res;
   }
 
@@ -117,6 +129,7 @@ class ConnectAutomataBuilder {
     auto res = ORGate(this->automatas.size());
     this->automatas.push_back(res.my_obj);
     Gates.push_back(res);
+    outputs.insert(res.C());
     return res;
   }
 
@@ -124,6 +137,7 @@ class ConnectAutomataBuilder {
     auto res = NORGate(this->automatas.size());
     this->automatas.push_back(res.my_obj);
     Gates.push_back(res);
+    outputs.insert(res.C());
     return res;
   }
 
@@ -131,6 +145,7 @@ class ConnectAutomataBuilder {
     auto res = XORGate(this->automatas.size());
     this->automatas.push_back(res.my_obj);
     Gates.push_back(res);
+    outputs.insert(res.C());
     return res;
   }
 
@@ -138,6 +153,7 @@ class ConnectAutomataBuilder {
     auto res = XNORGate(this->automatas.size());
     this->automatas.push_back(res.my_obj);
     Gates.push_back(res);
+    outputs.insert(res.C());
     return res;
   }
 
@@ -145,17 +161,30 @@ class ConnectAutomataBuilder {
     auto res = NOTGate(this->automatas.size());
     this->automatas.push_back(res.my_obj);
     Gates.push_back(res);
+    outputs.insert(res.C());
     return res;
   }
 
-  void assign(pulse a, pulse b) { edge.push_back({a, b}); }
+  DFGate makeDFGate() {
+    auto res = DFGate(this->automatas.size());
+    this->automatas.push_back(res.my_obj);
+    Gates.push_back(res);
+    outputs.insert(res.C());
+    return res;
+  }
+
+  void assign(pulse a, pulse b) { edge.push_back({b, a}); }
 
   PulseCA *build() {
     map<pulse, set<pulse>> wire_gen;
     set<pulse> dup_check;
+    set<pulse> all_output = this->outputs;
 
     for (auto e : edge) {
       wire_gen[e.first].insert(e.second);
+      if (all_output.count(e.first)) {
+        all_output.erase(e.first);
+      }
       if (dup_check.count(e.second)) {
         printf("ERROR duplicated assignments\n");
       }
@@ -175,19 +204,27 @@ class ConnectAutomataBuilder {
       }
       this->channels.push_back(channel);
     }
+    for (auto p : all_output) {
+      auto wire = Wire(this->automatas.size());
+      PulseChannel *channel = new PulseChannel();
+      channel->in = p;
+      channel->out.insert(wire.A());
+      this->automatas.push_back(wire.my_obj);
+      this->channels.push_back(channel);
+    }
     Clock c = Clock(this->automatas.size());
+    PulseChannel *clk_channel = new PulseChannel();
+    clk_channel->in = c.CLK();
     for (automata_id i = 0; i < wire_begin; i++) {
-      PulseChannel *channel = new PulseChannel();
-      channel->in = c.CLK();
-      channel->out.insert({i, 0});
-      this->channels.push_back(channel);
+      clk_channel->out.insert({i, 0});
     }
+    this->channels.push_back(clk_channel);
+    PulseChannel *fire_channel = new PulseChannel();
     for (automata_id i = wire_begin; i < automatas.size(); i++) {
-      PulseChannel *channel = new PulseChannel();
-      channel->in = c.FIRE();
-      channel->out.insert({i, 0});
-      this->channels.push_back(channel);
+      fire_channel->in = c.FIRE();
+      fire_channel->out.insert({i, 0});
     }
+    this->channels.push_back(fire_channel);
     this->automatas.push_back(c.my_obj);
     return new PulseCA(this->automatas, this->channels);
   }

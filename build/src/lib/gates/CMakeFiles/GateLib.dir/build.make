@@ -100,10 +100,38 @@ src/lib/gates/CMakeFiles/GateLib.dir/and.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GateLib.dir/and.cpp.s"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/and.cpp -o CMakeFiles/GateLib.dir/and.cpp.s
 
+src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/flags.make
+src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/not.cpp
+src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.o"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.o -MF CMakeFiles/GateLib.dir/not.cpp.o.d -o CMakeFiles/GateLib.dir/not.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/not.cpp
+
+src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GateLib.dir/not.cpp.i"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/not.cpp > CMakeFiles/GateLib.dir/not.cpp.i
+
+src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GateLib.dir/not.cpp.s"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/not.cpp -o CMakeFiles/GateLib.dir/not.cpp.s
+
+src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/flags.make
+src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/df.cpp
+src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.o"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.o -MF CMakeFiles/GateLib.dir/df.cpp.o.d -o CMakeFiles/GateLib.dir/df.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/df.cpp
+
+src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GateLib.dir/df.cpp.i"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/df.cpp > CMakeFiles/GateLib.dir/df.cpp.i
+
+src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GateLib.dir/df.cpp.s"
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/df.cpp -o CMakeFiles/GateLib.dir/df.cpp.s
+
 src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/flags.make
 src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/or.cpp
 src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.o"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.o -MF CMakeFiles/GateLib.dir/or.cpp.o.d -o CMakeFiles/GateLib.dir/or.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/or.cpp
 
 src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.i: cmake_force
@@ -117,7 +145,7 @@ src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.s: cmake_force
 src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/flags.make
 src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/clk.cpp
 src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o -MF CMakeFiles/GateLib.dir/clk.cpp.o.d -o CMakeFiles/GateLib.dir/clk.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/clk.cpp
 
 src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.i: cmake_force
@@ -131,7 +159,7 @@ src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.s: cmake_force
 src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/flags.make
 src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/nand.cpp
 src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o -MF CMakeFiles/GateLib.dir/nand.cpp.o.d -o CMakeFiles/GateLib.dir/nand.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/nand.cpp
 
 src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.i: cmake_force
@@ -145,7 +173,7 @@ src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.s: cmake_force
 src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/flags.make
 src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/nor.cpp
 src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.o"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.o -MF CMakeFiles/GateLib.dir/nor.cpp.o.d -o CMakeFiles/GateLib.dir/nor.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/nor.cpp
 
 src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.i: cmake_force
@@ -159,7 +187,7 @@ src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.s: cmake_force
 src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/flags.make
 src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/xor.cpp
 src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.o"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.o -MF CMakeFiles/GateLib.dir/xor.cpp.o.d -o CMakeFiles/GateLib.dir/xor.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/xor.cpp
 
 src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.i: cmake_force
@@ -173,7 +201,7 @@ src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.s: cmake_force
 src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/flags.make
 src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.o: /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/xnor.cpp
 src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.o: src/lib/gates/CMakeFiles/GateLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.o"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.o -MF CMakeFiles/GateLib.dir/xnor.cpp.o.d -o CMakeFiles/GateLib.dir/xnor.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/xnor.cpp
 
 src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.i: cmake_force
@@ -188,6 +216,8 @@ src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.s: cmake_force
 GateLib_OBJECTS = \
 "CMakeFiles/GateLib.dir/wire.cpp.o" \
 "CMakeFiles/GateLib.dir/and.cpp.o" \
+"CMakeFiles/GateLib.dir/not.cpp.o" \
+"CMakeFiles/GateLib.dir/df.cpp.o" \
 "CMakeFiles/GateLib.dir/or.cpp.o" \
 "CMakeFiles/GateLib.dir/clk.cpp.o" \
 "CMakeFiles/GateLib.dir/nand.cpp.o" \
@@ -200,6 +230,8 @@ GateLib_EXTERNAL_OBJECTS =
 
 src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/wire.cpp.o
 src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/and.cpp.o
+src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.o
+src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.o
 src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.o
 src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o
 src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o
@@ -208,7 +240,7 @@ src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/xor.cpp.o
 src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/xnor.cpp.o
 src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/build.make
 src/lib/gates/libGateLib.a: src/lib/gates/CMakeFiles/GateLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libGateLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libGateLib.a"
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && $(CMAKE_COMMAND) -P CMakeFiles/GateLib.dir/cmake_clean_target.cmake
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GateLib.dir/link.txt --verbose=$(VERBOSE)
 

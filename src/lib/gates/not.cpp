@@ -45,7 +45,6 @@ Automata * NOT_GATE() {
 
     res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(IDLE, IDLE, CLK, C));
-    res->appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
     res->appendEdge(Edge(A_ARRIVED, IDLE, CLK, NO_OUTPUT));
     res -> full_reduce();

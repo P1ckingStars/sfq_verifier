@@ -6,6 +6,12 @@
   "output": "CMakeFiles/test1.dir/test/test1.cpp.o"
 },
 {
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/test2.dir/test/test2.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/test/test2.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/test/test2.cpp",
+  "output": "CMakeFiles/test2.dir/test/test2.cpp.o"
+},
+{
   "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib",
   "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp",
   "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp",
@@ -40,6 +46,18 @@
   "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/and.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/and.cpp",
   "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/and.cpp",
   "output": "src/lib/gates/CMakeFiles/GateLib.dir/and.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/not.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/not.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/not.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/df.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/df.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/df.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.o"
 },
 {
   "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",

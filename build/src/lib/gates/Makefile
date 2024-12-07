@@ -178,6 +178,30 @@ clk.cpp.s:
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.s
 .PHONY : clk.cpp.s
 
+df.o: df.cpp.o
+.PHONY : df.o
+
+# target to build an object file
+df.cpp.o:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.o
+.PHONY : df.cpp.o
+
+df.i: df.cpp.i
+.PHONY : df.i
+
+# target to preprocess a source file
+df.cpp.i:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.i
+.PHONY : df.cpp.i
+
+df.s: df.cpp.s
+.PHONY : df.s
+
+# target to generate assembly for a file
+df.cpp.s:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.s
+.PHONY : df.cpp.s
+
 nand.o: nand.cpp.o
 .PHONY : nand.o
 
@@ -225,6 +249,30 @@ nor.s: nor.cpp.s
 nor.cpp.s:
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/nor.cpp.s
 .PHONY : nor.cpp.s
+
+not.o: not.cpp.o
+.PHONY : not.o
+
+# target to build an object file
+not.cpp.o:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.o
+.PHONY : not.cpp.o
+
+not.i: not.cpp.i
+.PHONY : not.i
+
+# target to preprocess a source file
+not.cpp.i:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.i
+.PHONY : not.cpp.i
+
+not.s: not.cpp.s
+.PHONY : not.s
+
+# target to generate assembly for a file
+not.cpp.s:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/not.cpp.s
+.PHONY : not.cpp.s
 
 or.o: or.cpp.o
 .PHONY : or.o
@@ -337,12 +385,18 @@ help:
 	@echo "... clk.o"
 	@echo "... clk.i"
 	@echo "... clk.s"
+	@echo "... df.o"
+	@echo "... df.i"
+	@echo "... df.s"
 	@echo "... nand.o"
 	@echo "... nand.i"
 	@echo "... nand.s"
 	@echo "... nor.o"
 	@echo "... nor.i"
 	@echo "... nor.s"
+	@echo "... not.o"
+	@echo "... not.i"
+	@echo "... not.s"
 	@echo "... or.o"
 	@echo "... or.i"
 	@echo "... or.s"

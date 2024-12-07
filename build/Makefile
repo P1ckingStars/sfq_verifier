@@ -130,6 +130,19 @@ test1/fast:
 .PHONY : test1/fast
 
 #=============================================================================
+# Target rules for targets named test2
+
+# Build rule for target.
+test2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test2
+.PHONY : test2
+
+# fast build rule for target.
+test2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test2.dir/build.make CMakeFiles/test2.dir/build
+.PHONY : test2/fast
+
+#=============================================================================
 # Target rules for targets named TALib
 
 # Build rule for target.
@@ -179,6 +192,30 @@ test/test1.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/test/test1.cpp.s
 .PHONY : test/test1.cpp.s
 
+test/test2.o: test/test2.cpp.o
+.PHONY : test/test2.o
+
+# target to build an object file
+test/test2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test2.dir/build.make CMakeFiles/test2.dir/test/test2.cpp.o
+.PHONY : test/test2.cpp.o
+
+test/test2.i: test/test2.cpp.i
+.PHONY : test/test2.i
+
+# target to preprocess a source file
+test/test2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test2.dir/build.make CMakeFiles/test2.dir/test/test2.cpp.i
+.PHONY : test/test2.cpp.i
+
+test/test2.s: test/test2.cpp.s
+.PHONY : test/test2.s
+
+# target to generate assembly for a file
+test/test2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test2.dir/build.make CMakeFiles/test2.dir/test/test2.cpp.s
+.PHONY : test/test2.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -190,9 +227,13 @@ help:
 	@echo "... GateLib"
 	@echo "... TALib"
 	@echo "... test1"
+	@echo "... test2"
 	@echo "... test/test1.o"
 	@echo "... test/test1.i"
 	@echo "... test/test1.s"
+	@echo "... test/test2.o"
+	@echo "... test/test2.i"
+	@echo "... test/test2.s"
 .PHONY : help
 
 

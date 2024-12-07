@@ -72,6 +72,7 @@ Automata *PulseCA::to_dfa() {
   while (!q.empty()) {
     auto state = q.front();
     q.pop_front();
+    cout << "CURRENT STATE: " << state->to_str() << endl;
     for (letter_t i = 0; i < this->total_letter; i++) {
       if (letter_in_channel.count(i))
         continue;
@@ -81,6 +82,7 @@ Automata *PulseCA::to_dfa() {
       string next_state_query;
       if (!!(next_state = this->next(state, i, output))) {
         if (!ca2dfa.count(next_state_query = next_state->to_str())) {
+          cout << "NEXT STATE: " << next_state->to_str() << endl;
           APPEND_STATE(next_state);
         }
         letter_t edge_out = NO_OUTPUT;

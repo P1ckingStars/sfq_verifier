@@ -37,7 +37,7 @@ class OR(SFQ):
 
 using namespace ta;
 
-Automata * OR_Gate () {
+Automata * OR_GATE () {
     Automata * res = new Automata();
     res -> appendNode(); //IDLE
     res -> appendNode(); //A_OR_B_ARRIVED

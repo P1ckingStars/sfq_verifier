@@ -147,4 +147,7 @@ src/lib/gates/CMakeFiles/GateLib.dir/nand.cpp.o: \
  /usr/include/c++/14.2.1/bits/stl_bvector.h \
  /usr/include/c++/14.2.1/bits/vector.tcc \
  /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include/gates.hpp \
- /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include/automata.hpp
+ /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include/automata.hpp \
+ /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include/cta.hpp \
+ /usr/include/c++/14.2.1/utility \
+ /usr/include/c++/14.2.1/bits/stl_relops.h

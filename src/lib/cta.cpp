@@ -118,17 +118,19 @@ PulseCAState *PulseCA::next(PulseCAState const *state, letter_t act,
   while (!pulses.empty()) {
     pulse p = pulses.front();
     pulses.pop_front();
-    if ((n_state = automatas_[p.id]->next(state->states[p.id], p.letter))
+    if ((n_state = automatas_[p.id]->next(new_state->states[p.id], p.letter))
             .first != STATE_NOT_EXISTS) {
       new_state->states[p.id] = n_state.first;
       if (n_state.second != NO_OUTPUT) {
         if (this->input_channels_[p.id].count(n_state.second)) {
           for (auto new_p : this->input_channels_[p.id][n_state.second]->out) {
+            /*
             if (visited[new_p.id]) {
               delete new_state;
               cout << "ERROR: loop" << endl;
               return nullptr;
             }
+            */
             cout << "signal propagate " << new_p.id << " " << new_p.letter
                  << endl;
             pulses.push_back(new_p);

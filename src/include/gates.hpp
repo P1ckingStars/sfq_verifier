@@ -101,6 +101,7 @@ struct DFGate : GateInterface {
   pulse A() { return {id, 1}; }
   pulse C() { return {id, 2}; }
 };
+
 class ConnectAutomataBuilder {
   vector<Automata *> automatas;
   vector<GateInterface> Gates;

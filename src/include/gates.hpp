@@ -40,6 +40,15 @@ struct Wire : GateInterface {
   pulse B() { return {id, 2}; }
 };
 
+struct MUXGate : GateInterface {
+  MUXGate(automata_id id) : GateInterface(id) { this->my_obj = MUX_GATE(); }
+  pulse CLK() { return {id, 0}; }
+  pulse A() { return {id, 1}; }
+  pulse B() { return {id, 2}; }
+  pulse SEL() { return {id, 3};}
+  pulse C() { return {id, 4}; }
+};
+
 struct ANDGate : GateInterface {
   ANDGate(automata_id id) : GateInterface(id) { this->my_obj = AND_GATE(); }
   pulse CLK() { return {id, 0}; }
@@ -110,6 +119,14 @@ class ConnectAutomataBuilder {
   vector<pair<pulse, pulse>> edge;
 
 public:
+  MUXGate makeMUXGate() {
+    auto res = MUXGate(this->automatas.size());
+    this->automatas.push_back(res.my_obj);
+    Gates.push_back(res);
+    outputs.insert(res.C());
+    return res;
+  }
+
   ANDGate makeANDGate() {
     auto res = ANDGate(this->automatas.size());
     this->automatas.push_back(res.my_obj);

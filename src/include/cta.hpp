@@ -20,6 +20,7 @@ struct pulse {
     return id < p.id || (id == p.id && letter < p.letter);
   }
 };
+
 struct PulseChannel {
   channel_id id;
   pulse in;
@@ -55,10 +56,18 @@ public:
   PulseCA(vector<Automata *> automata, vector<PulseChannel *> channels);
   Automata *to_dfa(); // TODOS
   void print_map() {
-        cout << "Letter Map Table: " << endl;
+    cout << "Letter Map Table: " << endl;
     for (auto p : letter_map) {
-        cout << "    " << p.first << ": " << p.second.id << "." << p.second.letter << endl;
+      cout << "    " << p.first << ": " << p.second.id << "." << p.second.letter
+           << endl;
     }
+  }
+  map<pulse, letter_t> pulse2letter_map() {
+    map<pulse, letter_t> res;
+    for (auto p : letter_map) {
+      res[p.second] = p.first;
+    }
+    return res;
   }
 };
 

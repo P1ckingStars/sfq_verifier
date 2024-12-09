@@ -6,6 +6,8 @@
 #include <iostream>
 #include <map>
 #include <set>
+#include <sstream>
+#include <string>
 #include <vector>
 
 namespace ta {
@@ -21,12 +23,23 @@ struct Edge {
   state_t from;
   state_t to;
   set<letter_t> letters;
-  letter_t output;
+  set<letter_t> output;
   Edge() {}
-  Edge(state_t from, state_t to, letter_t l, letter_t output) {
+  Edge(state_t from, state_t to, letter_t l) {
+    this->from = from;
+    this->to = to;
+    this->letters.insert(l);
+  }
+  Edge(state_t from, state_t to, letter_t l, set<letter_t> output) {
     this->from = from;
     this->to = to;
     this->output = output;
+    this->letters.insert(l);
+  }
+  Edge(state_t from, state_t to, letter_t l, letter_t output) {
+    this->from = from;
+    this->to = to;
+    this->output.insert(output);
     this->letters.insert(l);
   }
   // definition of equivalant classes
@@ -55,6 +68,24 @@ struct Node {
   set<Edge> fwd_edges;
   Node() {}
   Node(state_t nodeid) { id = nodeid; }
+  string to_string_idx() {
+    stringstream ss;
+    set<Edge> new_edge;
+    for (auto e : fwd_edges) {
+      if (e.to == this->id) {
+        e.to = -1;
+      }
+      new_edge.insert(e);
+    }
+    for (auto e : new_edge) {
+      ss << e.to << ": ";
+      for (auto l : e.letters) {
+        ss << l << ", ";
+      }
+      ss << ";";
+    }
+    return ss.str();
+  }
   bool operator==(Node const &node) const {
     if (this->fwd_edges.size() != node.fwd_edges.size()) {
       return false;
@@ -92,7 +123,7 @@ public:
   letter_t replace_input(letter_t begin, map<letter_t, letter_t> &mp);
 #define STATE_NOT_EXISTS (1 << 31)
   // return (1 << 31) if not exists
-  pair<state_t, letter_t> next(state_t from, letter_t act);
+  pair<state_t, set<letter_t>> next(state_t from, letter_t act);
   void appendNode();
   void mergeEdge();
   void appendEdge(Edge e);
@@ -107,7 +138,11 @@ public:
         for (letter_t act : edge.letters) {
           cout << " | " << act;
         }
-        cout << " ==>> " << edge.to << " out: " << edge.output << endl;
+        cout << " ==>> " << edge.to << " out: ";
+        for (letter_t l : edge.output) {
+          cout << l;
+        }
+        cout << endl;
       }
     }
   }

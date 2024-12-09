@@ -57,14 +57,14 @@ Automata * XOR_GATE() {
     res->appendNode(); // s_2: b_arrive
     res->appendNode(); // s_3: ab_arrive
 
-    res->appendEdge(Edge(IDLE, IDLE, CLK, NO_OUTPUT));
-    res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
-    res->appendEdge(Edge(IDLE, B_ARRIVED, B, NO_OUTPUT));
-    res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
-    res->appendEdge(Edge(A_ARRIVED, IDLE, B, NO_OUTPUT));
+    res->appendEdge(Edge(IDLE, IDLE, CLK));
+    res->appendEdge(Edge(IDLE, A_ARRIVED, A));
+    res->appendEdge(Edge(IDLE, B_ARRIVED, B));
+    res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A));
+    res->appendEdge(Edge(A_ARRIVED, IDLE, B));
     res->appendEdge(Edge(A_ARRIVED, IDLE, CLK, C));
-    res->appendEdge(Edge(B_ARRIVED, B_ARRIVED, B, NO_OUTPUT));
-    res->appendEdge(Edge(B_ARRIVED, IDLE, A, NO_OUTPUT));
+    res->appendEdge(Edge(B_ARRIVED, B_ARRIVED, B));
+    res->appendEdge(Edge(B_ARRIVED, IDLE, A));
     res->appendEdge(Edge(B_ARRIVED, IDLE, CLK, C));
     res->full_reduce();
     return res;

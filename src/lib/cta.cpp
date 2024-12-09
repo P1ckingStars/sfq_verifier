@@ -68,7 +68,6 @@ Automata *PulseCA::to_dfa() {
   unordered_map<string, state_t> ca2dfa;
   deque<PulseCAState *> q;
   APPEND_STATE(init_state);
-  map<set<letter_t>, letter_t> mp;
   while (!q.empty()) {
     auto state = q.front();
     q.pop_front();
@@ -85,14 +84,7 @@ Automata *PulseCA::to_dfa() {
           cout << "NEXT STATE: " << next_state->to_str() << endl;
           APPEND_STATE(next_state);
         }
-        letter_t edge_out = NO_OUTPUT;
-        if (!output.empty()) {
-          if (!mp.count(output)) {
-            mp.insert({output, mp.size()});
-          }
-          edge_out = mp[output] + letter_map.size();
-        }
-        Edge e(ca2dfa[state->to_str()], ca2dfa[next_state_query], i, edge_out);
+        Edge e(ca2dfa[state->to_str()], ca2dfa[next_state_query], i, output);
         res->appendEdge(e);
       }
     }
@@ -103,7 +95,7 @@ Automata *PulseCA::to_dfa() {
 PulseCAState *PulseCA::next(PulseCAState const *state, letter_t act,
                             set<letter_t> &output) {
   automata_id a_id = this->letter4automata[act];
-  pair<state_t, letter_t> n_state;
+  pair<state_t, set<letter_t>> n_state;
   deque<pulse> pulses;
   vector<bool> visited(this->automatas_.size());
 #define GO_VISIT(p)                                                            \
@@ -121,22 +113,15 @@ PulseCAState *PulseCA::next(PulseCAState const *state, letter_t act,
     if ((n_state = automatas_[p.id]->next(new_state->states[p.id], p.letter))
             .first != STATE_NOT_EXISTS) {
       new_state->states[p.id] = n_state.first;
-      if (n_state.second != NO_OUTPUT) {
-        if (this->input_channels_[p.id].count(n_state.second)) {
-          for (auto new_p : this->input_channels_[p.id][n_state.second]->out) {
-            /*
-            if (visited[new_p.id]) {
-              delete new_state;
-              cout << "ERROR: loop" << endl;
-              return nullptr;
-            }
-            */
+      for (auto l : n_state.second) {
+        if (this->input_channels_[p.id].count(l)) {
+          for (auto new_p : this->input_channels_[p.id][l]->out) {
             cout << "signal propagate " << new_p.id << " " << new_p.letter
                  << endl;
             pulses.push_back(new_p);
           }
         } else {
-          output.insert(n_state.second);
+          output.insert(l);
         }
       }
     } else {

@@ -18,9 +18,9 @@ Automata * DF_GATE() {
     res->appendNode(); // s_0
     res->appendNode(); // s_1: a_arrive
 
-    res->appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
-    res->appendEdge(Edge(IDLE, IDLE, CLK, NO_OUTPUT));
-    res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
+    res->appendEdge(Edge(IDLE, A_ARRIVED, A));
+    res->appendEdge(Edge(IDLE, IDLE, CLK));
+    res->appendEdge(Edge(A_ARRIVED, A_ARRIVED, A));
     res->appendEdge(Edge(A_ARRIVED, IDLE, CLK, C));
     res -> full_reduce();
     return res;

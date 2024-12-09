@@ -68,17 +68,17 @@ Automata * NAND_GATE() {
     res -> appendNode(); // s_3: a_and_b_arrived
 
     res -> appendEdge(Edge(IDLE, IDLE, CLK, C));
-    res -> appendEdge(Edge(IDLE, A_ARRIVED, A, NO_OUTPUT));
-    res -> appendEdge(Edge(IDLE, B_ARRIVED, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_ARRIVED, A_AND_B_ARRIVED, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_ARRIVED, A_ARRIVED, A, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, A_ARRIVED, A));
+    res -> appendEdge(Edge(IDLE, B_ARRIVED, B));
+    res -> appendEdge(Edge(A_ARRIVED, A_AND_B_ARRIVED, B));
+    res -> appendEdge(Edge(A_ARRIVED, A_ARRIVED, A));
     res -> appendEdge(Edge(A_ARRIVED, IDLE, CLK, C));
-    res -> appendEdge(Edge(B_ARRIVED, A_AND_B_ARRIVED, A, NO_OUTPUT));
+    res -> appendEdge(Edge(B_ARRIVED, A_AND_B_ARRIVED, A));
     res -> appendEdge(Edge(B_ARRIVED, IDLE, CLK, C));
-    res -> appendEdge(Edge(B_ARRIVED, B_ARRIVED, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_AND_B_ARRIVED, IDLE, CLK, NO_OUTPUT));
-    res -> appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, A, NO_OUTPUT)); 
-    res -> appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, B, NO_OUTPUT));
+    res -> appendEdge(Edge(B_ARRIVED, B_ARRIVED, B));
+    res -> appendEdge(Edge(A_AND_B_ARRIVED, IDLE, CLK));
+    res -> appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, A)); 
+    res -> appendEdge(Edge(A_AND_B_ARRIVED, A_AND_B_ARRIVED, B));
     res -> full_reduce();
 
     return res;

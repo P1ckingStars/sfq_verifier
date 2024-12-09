@@ -59,17 +59,17 @@ Automata * XNOR_GATE() {
     res -> appendNode(); // s_3: ab_arrive
     
     res -> appendEdge(Edge(IDLE, IDLE, CLK, C));
-    res -> appendEdge(Edge(IDLE, A_ARRIVE, A, NO_OUTPUT));
-    res -> appendEdge(Edge(IDLE, B_ARRIVE, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_ARRIVE, A_ARRIVE, A, NO_OUTPUT));
-    res -> appendEdge(Edge(A_ARRIVE, AB_ARRIVE, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_ARRIVE, IDLE, CLK, NO_OUTPUT));
-    res -> appendEdge(Edge(B_ARRIVE, B_ARRIVE, B, NO_OUTPUT));
-    res -> appendEdge(Edge(B_ARRIVE, AB_ARRIVE, A, NO_OUTPUT));
-    res -> appendEdge(Edge(B_ARRIVE, IDLE, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, A_ARRIVE, A));
+    res -> appendEdge(Edge(IDLE, B_ARRIVE, B));
+    res -> appendEdge(Edge(A_ARRIVE, A_ARRIVE, A));
+    res -> appendEdge(Edge(A_ARRIVE, AB_ARRIVE, B));
+    res -> appendEdge(Edge(A_ARRIVE, IDLE, CLK));
+    res -> appendEdge(Edge(B_ARRIVE, B_ARRIVE, B));
+    res -> appendEdge(Edge(B_ARRIVE, AB_ARRIVE, A));
+    res -> appendEdge(Edge(B_ARRIVE, IDLE, CLK));
     res -> appendEdge(Edge(AB_ARRIVE, IDLE, CLK, C));
-    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, A, NO_OUTPUT));
-    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, B, NO_OUTPUT));
+    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, A));
+    res -> appendEdge(Edge(AB_ARRIVE, AB_ARRIVE, B));
     res -> full_reduce();
     return res;
 }

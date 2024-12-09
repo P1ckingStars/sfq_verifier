@@ -42,11 +42,11 @@ Automata * OR_GATE () {
     res -> appendNode(); //IDLE
     res -> appendNode(); //A_OR_B_ARRIVED
     
-    res -> appendEdge(Edge(IDLE, IDLE, CLK, NO_OUTPUT));
-    res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, A, NO_OUTPUT));
-    res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, A, NO_OUTPUT));
-    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, B, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, IDLE, CLK));
+    res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, A));
+    res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, B));
+    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, A));
+    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, B));
     res -> appendEdge(Edge(A_OR_B_ARRIVED, IDLE, CLK, C));
     res -> full_reduce();
     

@@ -202,6 +202,30 @@ df.cpp.s:
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/df.cpp.s
 .PHONY : df.cpp.s
 
+mux.o: mux.cpp.o
+.PHONY : mux.o
+
+# target to build an object file
+mux.cpp.o:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/mux.cpp.o
+.PHONY : mux.cpp.o
+
+mux.i: mux.cpp.i
+.PHONY : mux.i
+
+# target to preprocess a source file
+mux.cpp.i:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/mux.cpp.i
+.PHONY : mux.cpp.i
+
+mux.s: mux.cpp.s
+.PHONY : mux.s
+
+# target to generate assembly for a file
+mux.cpp.s:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/mux.cpp.s
+.PHONY : mux.cpp.s
+
 nand.o: nand.cpp.o
 .PHONY : nand.o
 
@@ -298,6 +322,30 @@ or.cpp.s:
 	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/or.cpp.s
 .PHONY : or.cpp.s
 
+sync.o: sync.cpp.o
+.PHONY : sync.o
+
+# target to build an object file
+sync.cpp.o:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/sync.cpp.o
+.PHONY : sync.cpp.o
+
+sync.i: sync.cpp.i
+.PHONY : sync.i
+
+# target to preprocess a source file
+sync.cpp.i:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/sync.cpp.i
+.PHONY : sync.cpp.i
+
+sync.s: sync.cpp.s
+.PHONY : sync.s
+
+# target to generate assembly for a file
+sync.cpp.s:
+	cd /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build && $(MAKE) $(MAKESILENT) -f src/lib/gates/CMakeFiles/GateLib.dir/build.make src/lib/gates/CMakeFiles/GateLib.dir/sync.cpp.s
+.PHONY : sync.cpp.s
+
 wire.o: wire.cpp.o
 .PHONY : wire.o
 
@@ -388,6 +436,9 @@ help:
 	@echo "... df.o"
 	@echo "... df.i"
 	@echo "... df.s"
+	@echo "... mux.o"
+	@echo "... mux.i"
+	@echo "... mux.s"
 	@echo "... nand.o"
 	@echo "... nand.i"
 	@echo "... nand.s"
@@ -400,6 +451,9 @@ help:
 	@echo "... or.o"
 	@echo "... or.i"
 	@echo "... or.s"
+	@echo "... sync.o"
+	@echo "... sync.i"
+	@echo "... sync.s"
 	@echo "... wire.o"
 	@echo "... wire.i"
 	@echo "... wire.s"

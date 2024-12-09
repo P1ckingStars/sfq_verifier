@@ -47,11 +47,11 @@ Automata * NOR_Gate () {
     res -> appendNode(); //A_OR_B_ARRIVED
     
     res -> appendEdge(Edge(IDLE, IDLE, CLK, C));
-    res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, A, NO_OUTPUT));
-    res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, A, NO_OUTPUT));
-    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, B, NO_OUTPUT));
-    res -> appendEdge(Edge(A_OR_B_ARRIVED, IDLE, CLK, NO_OUTPUT));
+    res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, A));
+    res -> appendEdge(Edge(IDLE, A_OR_B_ARRIVED, B));
+    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, A));
+    res -> appendEdge(Edge(A_OR_B_ARRIVED, A_OR_B_ARRIVED, B));
+    res -> appendEdge(Edge(A_OR_B_ARRIVED, IDLE, CLK));
     res -> full_reduce();
 
     return res;

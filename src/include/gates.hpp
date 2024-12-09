@@ -3,6 +3,7 @@
 
 #include "automata.hpp"
 #include "cta.hpp"
+#include <ctime>
 #include <map>
 #include <utility>
 #include <vector>
@@ -11,11 +12,13 @@ using namespace ta;
 Automata *WIRE();
 Automata *AND_GATE();
 Automata *CLK_UNIT();
+Automata *SYNC_UNIT();
 Automata *NAND_GATE();
 Automata *NOR_GATE();
 Automata *NOT_GATE();
 Automata *DF_GATE();
 Automata *OR_GATE();
+Automata *MUX_GATE();
 Automata *XNOR_GATE();
 Automata *XOR_GATE();
 
@@ -26,6 +29,11 @@ struct GateInterface {
   Automata *automata() { return my_obj; }
 };
 
+struct Sync : GateInterface {
+  Sync(automata_id id) : GateInterface(id) { this->my_obj = SYNC_UNIT(); }
+  pulse A() { return {id, 0}; }
+  pulse B() { return {id, 1}; }
+};
 struct Clock : GateInterface {
   Clock(automata_id id) : GateInterface(id) { this->my_obj = CLK_UNIT(); }
   pulse CLK() { return {id, 0}; }
@@ -45,7 +53,7 @@ struct MUXGate : GateInterface {
   pulse CLK() { return {id, 0}; }
   pulse A() { return {id, 1}; }
   pulse B() { return {id, 2}; }
-  pulse SEL() { return {id, 3};}
+  pulse SEL() { return {id, 3}; }
   pulse C() { return {id, 4}; }
 };
 
@@ -193,7 +201,14 @@ public:
 
   void assign(pulse a, pulse b) { edge.push_back({b, a}); }
 
-  PulseCA *build() {
+  vector<pulse> sync_letters;
+  automata_id add_module(Automata *circuit, letter_t sync_letter) {
+    automata_id res = this->automatas.size();
+    this->automatas.push_back(circuit);
+    sync_letters.push_back({res, sync_letter});
+    return res;
+  }
+  PulseCA *build_sync(Clock *clk) {
     map<pulse, set<pulse>> wire_gen;
     set<pulse> dup_check;
     set<pulse> all_output = this->outputs;
@@ -244,6 +259,116 @@ public:
     }
     this->channels.push_back(fire_channel);
     this->automatas.push_back(c.my_obj);
+    Sync s = Sync(this->automatas.size());
+    PulseChannel *sync_channel = new PulseChannel();
+    sync_channel->in = s.B();
+    for (auto l : sync_letters) {
+      sync_channel->out.insert(l);
+    }
+    sync_channel->out.insert(c.A());
+    this->channels.push_back(sync_channel);
+    this->automatas.push_back(s.my_obj);
+    *clk = c;
+    return new PulseCA(this->automatas, this->channels);
+  }
+  PulseCA *build_module(Clock *clk) {
+    map<pulse, set<pulse>> wire_gen;
+    set<pulse> dup_check;
+    set<pulse> all_output = this->outputs;
+
+    for (auto e : edge) {
+      wire_gen[e.first].insert(e.second);
+      if (all_output.count(e.first)) {
+        all_output.erase(e.first);
+      }
+      if (dup_check.count(e.second)) {
+        printf("ERROR duplicated assignments\n");
+      }
+    }
+    automata_id wire_begin = automatas.size();
+    for (auto p : wire_gen) {
+      PulseChannel *channel = new PulseChannel();
+      channel->in = p.first;
+      for (auto to : p.second) {
+        auto wire = Wire(this->automatas.size());
+        this->automatas.push_back(wire.my_obj);
+        channel->out.insert(wire.A());
+        PulseChannel *out_channel = new PulseChannel();
+        out_channel->in = wire.B();
+        out_channel->out.insert(to);
+        this->channels.push_back(out_channel);
+      }
+      this->channels.push_back(channel);
+    }
+    for (auto p : all_output) {
+      auto wire = Wire(this->automatas.size());
+      PulseChannel *channel = new PulseChannel();
+      channel->in = p;
+      channel->out.insert(wire.A());
+      this->automatas.push_back(wire.my_obj);
+      this->channels.push_back(channel);
+    }
+    Clock c = Clock(this->automatas.size());
+    PulseChannel *clk_channel = new PulseChannel();
+    clk_channel->in = c.CLK();
+    for (automata_id i = 0; i < wire_begin; i++) {
+      clk_channel->out.insert({i, 0});
+    }
+    this->channels.push_back(clk_channel);
+    PulseChannel *fire_channel = new PulseChannel();
+    for (automata_id i = wire_begin; i < automatas.size(); i++) {
+      fire_channel->in = c.FIRE();
+      fire_channel->out.insert({i, 0});
+    }
+    this->channels.push_back(fire_channel);
+    this->automatas.push_back(c.my_obj);
+    *clk = c;
+    return new PulseCA(this->automatas, this->channels);
+  }
+  PulseCA *build(Clock *clk) {
+    map<pulse, set<pulse>> wire_gen;
+    set<pulse> dup_check;
+    set<pulse> all_output = this->outputs;
+
+    for (auto e : edge) {
+      wire_gen[e.first].insert(e.second);
+      if (all_output.count(e.first)) {
+        all_output.erase(e.first);
+      }
+      if (dup_check.count(e.second)) {
+        printf("ERROR duplicated assignments\n");
+      }
+    }
+    automata_id wire_begin = automatas.size();
+    for (auto p : wire_gen) {
+      PulseChannel *channel = new PulseChannel();
+      channel->in = p.first;
+      for (auto to : p.second) {
+        auto wire = Wire(this->automatas.size());
+        this->automatas.push_back(wire.my_obj);
+        channel->out.insert(wire.A());
+        PulseChannel *out_channel = new PulseChannel();
+        out_channel->in = wire.B();
+        out_channel->out.insert(to);
+        this->channels.push_back(out_channel);
+      }
+      this->channels.push_back(channel);
+    }
+    Clock c = Clock(this->automatas.size());
+    PulseChannel *clk_channel = new PulseChannel();
+    clk_channel->in = c.CLK();
+    for (automata_id i = 0; i < wire_begin; i++) {
+      clk_channel->out.insert({i, 0});
+    }
+    this->channels.push_back(clk_channel);
+    PulseChannel *fire_channel = new PulseChannel();
+    for (automata_id i = wire_begin; i < automatas.size(); i++) {
+      fire_channel->in = c.FIRE();
+      fire_channel->out.insert({i, 0});
+    }
+    this->channels.push_back(fire_channel);
+    this->automatas.push_back(c.my_obj);
+    *clk = c;
     return new PulseCA(this->automatas, this->channels);
   }
 };

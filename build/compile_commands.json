@@ -12,6 +12,12 @@
   "output": "CMakeFiles/test2.dir/test/test2.cpp.o"
 },
 {
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/test3.dir/test/test3.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/test/test3.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/test/test3.cpp",
+  "output": "CMakeFiles/test3.dir/test/test3.cpp.o"
+},
+{
   "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib",
   "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp",
   "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp",
@@ -34,6 +40,12 @@
   "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/regioned_timed_automata.cpp",
   "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/regioned_timed_automata.cpp",
   "output": "src/lib/CMakeFiles/TALib.dir/regioned_timed_automata.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/sync.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/sync.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/sync.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/sync.cpp.o"
 },
 {
   "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
@@ -70,6 +82,12 @@
   "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/clk.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/clk.cpp",
   "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/clk.cpp",
   "output": "src/lib/gates/CMakeFiles/GateLib.dir/clk.cpp.o"
+},
+{
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/GateLib.dir/mux.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/mux.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/gates/mux.cpp",
+  "output": "src/lib/gates/CMakeFiles/GateLib.dir/mux.cpp.o"
 },
 {
   "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib/gates",

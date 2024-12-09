@@ -60,6 +60,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/test1.dir/DependInfo.cmake"
   "CMakeFiles/test2.dir/DependInfo.cmake"
+  "CMakeFiles/test3.dir/DependInfo.cmake"
   "src/lib/CMakeFiles/TALib.dir/DependInfo.cmake"
   "src/lib/gates/CMakeFiles/GateLib.dir/DependInfo.cmake"
   )

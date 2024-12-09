@@ -15,8 +15,8 @@ Automata *WIRE() {
   Automata *res = new Automata();
   res->appendNode(); // s_0: idle
   res->appendNode(); // s_1: output arrived
-  res->appendEdge(Edge(IDLE, PULSE, A, NO_OUTPUT));
-  res->appendEdge(Edge(IDLE, IDLE, FIRE, NO_OUTPUT));
+  res->appendEdge(Edge(IDLE, PULSE, A));
+  res->appendEdge(Edge(IDLE, IDLE, FIRE));
   res->appendEdge(Edge(PULSE, IDLE, FIRE, B));
   return res;
 }

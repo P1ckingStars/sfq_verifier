@@ -29,6 +29,7 @@ void and_test1(Automata *automata) {
 
 int main() {
   ConnectAutomataBuilder builder;
+  Clock c(0);
   auto df1 = builder.makeDFGate();
   auto df2 = builder.makeDFGate();
   auto df3 = builder.makeDFGate();
@@ -52,7 +53,7 @@ int main() {
   builder.assign(and2.B(), inputC);
   builder.assign(or1.A(), and1.C());
   builder.assign(or1.B(), and2.C());
-  PulseCA *pca = builder.build();
+  PulseCA *pca = builder.build(&c);
   auto dfa = pca->to_dfa();
   pca->print_map();
   dfa->print_transition_table();

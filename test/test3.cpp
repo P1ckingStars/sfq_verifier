@@ -28,6 +28,8 @@ void and_test1(Automata *automata) {
  * */
 
 int main() {
+  cout << "some new feature test but not complete!!!" << endl;
+  exit(-1);
   ConnectAutomataBuilder builder1;
   Clock c1(0);
   auto and1 = builder1.makeANDGate();

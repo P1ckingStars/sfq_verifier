@@ -12,7 +12,7 @@ using namespace std;
 
 /*
  *
- * MUX 
+ * (A and B) or (C and !D)
  *
  * */
 
@@ -22,25 +22,18 @@ int main() {
   auto df1 = builder.makeDFGate();
   auto df2 = builder.makeDFGate();
   auto df3 = builder.makeDFGate();
-  auto df4 = builder.makeDFGate();
-  auto df5 = builder.makeDFGate();
-  auto df6 = builder.makeDFGate();
   auto not1 = builder.makeNOTGate();
   auto and1 = builder.makeANDGate();
   auto and2 = builder.makeANDGate();
   auto or1 = builder.makeORGate();
-  auto inputA = df4.C();
-  auto inputNotA = not1.C();
-  auto inputB = df5.C();
-  auto inputC = df6.C();
-  builder.assign(df4.A(), df1.C());
-  builder.assign(df5.A(), df2.C());
-  builder.assign(df6.A(), df3.C());
-  builder.assign(not1.A(), df1.C());
+  auto inputA = df1.C();
+  auto inputB = df2.C();
+  auto inputC = df3.C();
+  auto inputNotD = not1.C();
   builder.assign(and1.A(), inputA);
   builder.assign(and1.B(), inputB);
-  builder.assign(and2.A(), inputNotA);
-  builder.assign(and2.B(), inputC);
+  builder.assign(and2.A(), inputC);
+  builder.assign(and2.B(), inputNotD);
   builder.assign(or1.A(), and1.C());
   builder.assign(or1.B(), and2.C());
   PulseCA *pca = builder.build(&c);

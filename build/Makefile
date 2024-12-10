@@ -169,6 +169,45 @@ test4/fast:
 .PHONY : test4/fast
 
 #=============================================================================
+# Target rules for targets named test5
+
+# Build rule for target.
+test5: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test5
+.PHONY : test5
+
+# fast build rule for target.
+test5/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/build
+.PHONY : test5/fast
+
+#=============================================================================
+# Target rules for targets named test7
+
+# Build rule for target.
+test7: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test7
+.PHONY : test7
+
+# fast build rule for target.
+test7/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/build
+.PHONY : test7/fast
+
+#=============================================================================
+# Target rules for targets named test8
+
+# Build rule for target.
+test8: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test8
+.PHONY : test8
+
+# fast build rule for target.
+test8/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/build
+.PHONY : test8/fast
+
+#=============================================================================
 # Target rules for targets named TALib
 
 # Build rule for target.
@@ -290,6 +329,78 @@ test/test4.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/test/test4.cpp.s
 .PHONY : test/test4.cpp.s
 
+test/test5.o: test/test5.cpp.o
+.PHONY : test/test5.o
+
+# target to build an object file
+test/test5.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/test/test5.cpp.o
+.PHONY : test/test5.cpp.o
+
+test/test5.i: test/test5.cpp.i
+.PHONY : test/test5.i
+
+# target to preprocess a source file
+test/test5.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/test/test5.cpp.i
+.PHONY : test/test5.cpp.i
+
+test/test5.s: test/test5.cpp.s
+.PHONY : test/test5.s
+
+# target to generate assembly for a file
+test/test5.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/test/test5.cpp.s
+.PHONY : test/test5.cpp.s
+
+test/test7.o: test/test7.cpp.o
+.PHONY : test/test7.o
+
+# target to build an object file
+test/test7.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test/test7.cpp.o
+.PHONY : test/test7.cpp.o
+
+test/test7.i: test/test7.cpp.i
+.PHONY : test/test7.i
+
+# target to preprocess a source file
+test/test7.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test/test7.cpp.i
+.PHONY : test/test7.cpp.i
+
+test/test7.s: test/test7.cpp.s
+.PHONY : test/test7.s
+
+# target to generate assembly for a file
+test/test7.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test/test7.cpp.s
+.PHONY : test/test7.cpp.s
+
+test/test8.o: test/test8.cpp.o
+.PHONY : test/test8.o
+
+# target to build an object file
+test/test8.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/test/test8.cpp.o
+.PHONY : test/test8.cpp.o
+
+test/test8.i: test/test8.cpp.i
+.PHONY : test/test8.i
+
+# target to preprocess a source file
+test/test8.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/test/test8.cpp.i
+.PHONY : test/test8.cpp.i
+
+test/test8.s: test/test8.cpp.s
+.PHONY : test/test8.s
+
+# target to generate assembly for a file
+test/test8.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/test/test8.cpp.s
+.PHONY : test/test8.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -304,6 +415,9 @@ help:
 	@echo "... test2"
 	@echo "... test3"
 	@echo "... test4"
+	@echo "... test5"
+	@echo "... test7"
+	@echo "... test8"
 	@echo "... test/test1.o"
 	@echo "... test/test1.i"
 	@echo "... test/test1.s"
@@ -316,6 +430,15 @@ help:
 	@echo "... test/test4.o"
 	@echo "... test/test4.i"
 	@echo "... test/test4.s"
+	@echo "... test/test5.o"
+	@echo "... test/test5.i"
+	@echo "... test/test5.s"
+	@echo "... test/test7.o"
+	@echo "... test/test7.i"
+	@echo "... test/test7.s"
+	@echo "... test/test8.o"
+	@echo "... test/test8.i"
+	@echo "... test/test8.s"
 .PHONY : help
 
 

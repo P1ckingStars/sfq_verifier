@@ -9,16 +9,16 @@
 using namespace ta;
 using namespace std;
 
-// 3 XOR GATE //
+// 3 OR GATE //
 
 int main() {
   ConnectAutomataBuilder builder;
   Clock c(0);
-  auto xor1 = builder.makeXORGate();
-  auto xor2 = builder.makeXORGate();
-  auto xor3 = builder.makeXORGate();
-  builder.assign(xor3.A(), xor1.C());
-  builder.assign(xor3.B(), xor2.C());
+  auto or1 = builder.makeORGate();
+  auto or2 = builder.makeORGate();
+  auto or3 = builder.makeORGate();
+  builder.assign(or3.A(), or1.C());
+  builder.assign(or3.B(), or2.C());
   PulseCA *pca = builder.build(&c);
   auto dfa = pca->to_dfa();
   pca->print_map();

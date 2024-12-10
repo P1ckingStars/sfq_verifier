@@ -67,6 +67,9 @@ all: CMakeFiles/test1.dir/all
 all: CMakeFiles/test2.dir/all
 all: CMakeFiles/test3.dir/all
 all: CMakeFiles/test4.dir/all
+all: CMakeFiles/test5.dir/all
+all: CMakeFiles/test7.dir/all
+all: CMakeFiles/test8.dir/all
 all: src/lib/all
 all: src/lib/gates/all
 .PHONY : all
@@ -76,6 +79,9 @@ codegen: CMakeFiles/test1.dir/codegen
 codegen: CMakeFiles/test2.dir/codegen
 codegen: CMakeFiles/test3.dir/codegen
 codegen: CMakeFiles/test4.dir/codegen
+codegen: CMakeFiles/test5.dir/codegen
+codegen: CMakeFiles/test7.dir/codegen
+codegen: CMakeFiles/test8.dir/codegen
 codegen: src/lib/codegen
 codegen: src/lib/gates/codegen
 .PHONY : codegen
@@ -90,6 +96,9 @@ clean: CMakeFiles/test1.dir/clean
 clean: CMakeFiles/test2.dir/clean
 clean: CMakeFiles/test3.dir/clean
 clean: CMakeFiles/test4.dir/clean
+clean: CMakeFiles/test5.dir/clean
+clean: CMakeFiles/test7.dir/clean
+clean: CMakeFiles/test8.dir/clean
 clean: src/lib/clean
 clean: src/lib/gates/clean
 .PHONY : clean
@@ -259,6 +268,102 @@ CMakeFiles/test4.dir/codegen:
 CMakeFiles/test4.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/clean
 .PHONY : CMakeFiles/test4.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test5.dir
+
+# All Build rule for target.
+CMakeFiles/test5.dir/all: src/lib/CMakeFiles/TALib.dir/all
+CMakeFiles/test5.dir/all: src/lib/gates/CMakeFiles/GateLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=27,28 "Built target test5"
+.PHONY : CMakeFiles/test5.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test5.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 20
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test5.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 0
+.PHONY : CMakeFiles/test5.dir/rule
+
+# Convenience name for target.
+test5: CMakeFiles/test5.dir/rule
+.PHONY : test5
+
+# codegen rule for target.
+CMakeFiles/test5.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/codegen
+.PHONY : CMakeFiles/test5.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test5.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/clean
+.PHONY : CMakeFiles/test5.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test7.dir
+
+# All Build rule for target.
+CMakeFiles/test7.dir/all: src/lib/CMakeFiles/TALib.dir/all
+CMakeFiles/test7.dir/all: src/lib/gates/CMakeFiles/GateLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=29,30 "Built target test7"
+.PHONY : CMakeFiles/test7.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test7.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 20
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test7.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 0
+.PHONY : CMakeFiles/test7.dir/rule
+
+# Convenience name for target.
+test7: CMakeFiles/test7.dir/rule
+.PHONY : test7
+
+# codegen rule for target.
+CMakeFiles/test7.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/codegen
+.PHONY : CMakeFiles/test7.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test7.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/clean
+.PHONY : CMakeFiles/test7.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test8.dir
+
+# All Build rule for target.
+CMakeFiles/test8.dir/all: src/lib/CMakeFiles/TALib.dir/all
+CMakeFiles/test8.dir/all: src/lib/gates/CMakeFiles/GateLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=31,32 "Built target test8"
+.PHONY : CMakeFiles/test8.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test8.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 20
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test8.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 0
+.PHONY : CMakeFiles/test8.dir/rule
+
+# Convenience name for target.
+test8: CMakeFiles/test8.dir/rule
+.PHONY : test8
+
+# codegen rule for target.
+CMakeFiles/test8.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/codegen
+.PHONY : CMakeFiles/test8.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test8.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/clean
+.PHONY : CMakeFiles/test8.dir/clean
 
 #=============================================================================
 # Target rules for target src/lib/CMakeFiles/TALib.dir

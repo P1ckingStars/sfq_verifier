@@ -156,6 +156,19 @@ test3/fast:
 .PHONY : test3/fast
 
 #=============================================================================
+# Target rules for targets named test4
+
+# Build rule for target.
+test4: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test4
+.PHONY : test4
+
+# fast build rule for target.
+test4/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/build
+.PHONY : test4/fast
+
+#=============================================================================
 # Target rules for targets named TALib
 
 # Build rule for target.
@@ -253,6 +266,30 @@ test/test3.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/test/test3.cpp.s
 .PHONY : test/test3.cpp.s
 
+test/test4.o: test/test4.cpp.o
+.PHONY : test/test4.o
+
+# target to build an object file
+test/test4.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/test/test4.cpp.o
+.PHONY : test/test4.cpp.o
+
+test/test4.i: test/test4.cpp.i
+.PHONY : test/test4.i
+
+# target to preprocess a source file
+test/test4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/test/test4.cpp.i
+.PHONY : test/test4.cpp.i
+
+test/test4.s: test/test4.cpp.s
+.PHONY : test/test4.s
+
+# target to generate assembly for a file
+test/test4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/test/test4.cpp.s
+.PHONY : test/test4.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -266,6 +303,7 @@ help:
 	@echo "... test1"
 	@echo "... test2"
 	@echo "... test3"
+	@echo "... test4"
 	@echo "... test/test1.o"
 	@echo "... test/test1.i"
 	@echo "... test/test1.s"
@@ -275,6 +313,9 @@ help:
 	@echo "... test/test3.o"
 	@echo "... test/test3.i"
 	@echo "... test/test3.s"
+	@echo "... test/test4.o"
+	@echo "... test/test4.i"
+	@echo "... test/test4.s"
 .PHONY : help
 
 

@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/test4.dir/link.d CMakeFiles/test4.dir/test/test4.cpp.o -o test4  src/lib/libTALib.a src/lib/gates/libGateLib.a

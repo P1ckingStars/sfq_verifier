@@ -83,8 +83,6 @@ size_t Automata::reduce() {
   cout << "reduce" << endl;
   eq_class classes(this->states.size());
   init_equivalant(classes);
-  unordered_map<string, state_id> find_same;
-  find_same.clear();
   for (int i = 0; i < this->states.size() - 1; i++) {
     for (int j = i + 1; j < this->states.size(); j++) {
       if (this->states[i] == this->states[j]) {
@@ -92,21 +90,11 @@ size_t Automata::reduce() {
       }
     }
   }
-  /*
-for (int i = 0; i < this->states.size() - 1; i++) {
-  if (find_same.count(this->states[i].to_string_idx())) {
-    add_equivalant(classes, i, find_same[this->states[i].to_string_idx()]);
-  } else {
-    find_same[this->states[i].to_string_idx()] = i;
-  }
-}
-     */
   auto new_mapping = finalize_equivalant(classes);
   for (int i = 0; i < this->states.size(); i++) {
     Node &node = this->states[i];
     node.id = classes[node.id];
     set<Edge> new_fwd_edges;
-
     for (Edge e : node.fwd_edges) {
       e.to = classes[e.to];
       e.from = classes[e.from];
@@ -131,11 +119,125 @@ size_t Automata::full_reduce() {
   return this->states.size();
 }
 
+template <class T> set<T> set_minus(set<T> x, set<T> y) {
+  set<T> res;
+  for (auto l : x) {
+    if (!y.count(l)) {
+      res.insert(l);
+    }
+  }
+  return res;
+}
+
+template <class T> set<T> intersect(set<T> const &x, set<T> const &y) {
+  set<T> res;
+  for (auto l : x) {
+    if (y.count(l)) {
+      res.insert(l);
+    }
+  }
+  return res;
+}
+
+size_t Automata::hopcroft() {
+  set<state_id> F;
+  set<state_id> Q_F;
+  set<set<state_id>> P;
+  set<set<state_id>> W;
+  for (int i = 0; i < this->states.size(); i++) {
+    bool inserted = false;
+    for (auto e : this->states[i].fwd_edges) {
+      if (!e.output.empty()) {
+        F.insert(i);
+        inserted = true;
+      }
+    }
+    if (!inserted)
+      Q_F.insert(i);
+  }
+  P.insert(F);
+  P.insert(Q_F);
+  W.insert(F);
+  W.insert(Q_F);
+  while (!W.empty()) {
+    set<state_id> A = *W.begin();
+    W.erase(W.begin());
+    for (auto l : this->acceptable) {
+      set<state_id> X;
+      X.clear();
+      for (int i = 0; i < this->states.size(); i++) {
+        auto n = this->next(i, l);
+        if (A.count(n.first)) {
+          X.insert(i);
+        }
+      }
+      // finish set up X
+      set<set<state_id>> newP;
+      for (auto Y : P) {
+        auto XnY = intersect(X, Y);
+        auto Y_X = set_minus(Y, X);
+        newP.insert(XnY);
+        newP.insert(Y_X);
+        if (XnY.empty() || Y_X.empty())
+          continue;
+        if (W.count(Y)) {
+          W.erase(Y);
+        }
+        if (XnY.size() <= Y_X.size()) {
+          W.insert(XnY);
+        } else {
+          W.insert(Y_X);
+        }
+      }
+      P = newP;
+    }
+  }
+  int idx = 1;
+  map<state_id, state_id> classes;
+  map<state_id, state_id> new_mapping;
+  new_mapping[0] = 0;
+  for (auto p : P) {
+    if (p.count(0)) {
+      for (auto s : p) {
+        classes[s] = 0;
+      }
+    } else {
+      for (auto s : p) {
+        classes[s] = idx;
+      }
+      new_mapping[idx] = *p.begin();
+      idx++;
+    }
+  }
+  for (int i = 0; i < this->states.size(); i++) {
+    Node &node = this->states[i];
+    node.id = classes[node.id];
+    set<Edge> new_fwd_edges;
+    for (Edge e : node.fwd_edges) {
+      e.to = classes[e.to];
+      e.from = classes[e.from];
+      new_fwd_edges.insert(e);
+    }
+    node.fwd_edges = new_fwd_edges;
+  }
+  vector<Node> new_states(new_mapping.size());
+  for (auto pair : new_mapping) {
+    new_states[pair.first] = this->states[pair.second];
+  }
+  this->states = new_states;
+  return full_reduce();
+}
+
 void Automata::appendNode() {
   this->states.push_back(Node(this->states.size()));
 }
 
-void Automata::appendEdge(Edge e) { this->states[e.from].fwd_edges.insert(e); }
+void Automata::appendEdge(Edge e) {
+  this->states[e.from].fwd_edges.insert(e);
+  for (auto l : e.letters) {
+    this->acceptable.insert(l);
+  }
+}
 
 letter_t Automata::replace_input(letter_t begin, map<letter_t, letter_t> &mp) {
   for (int i = 0; i < states.size(); i++) {

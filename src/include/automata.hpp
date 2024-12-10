@@ -112,7 +112,7 @@ struct Node {
 class Automata {
   uint32_t total_states;
   vector<Node> states;
-  vector<letter_t> acceptable;
+  set<letter_t> acceptable;
 
 public:
   //  0 1 2 3 4 5
@@ -129,6 +129,7 @@ public:
   void appendEdge(Edge e);
   size_t reduce();
   size_t full_reduce();
+  size_t hopcroft();
   bool run(vector<letter_t> input, vector<letter_t> &full_seqeunce);
   void print_transition_table() {
     for (int i = 0; i < states.size(); i++) {

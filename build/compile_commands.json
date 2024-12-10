@@ -18,6 +18,12 @@
   "output": "CMakeFiles/test3.dir/test/test3.cpp.o"
 },
 {
+  "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build",
+  "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/test4.dir/test/test4.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/test/test4.cpp",
+  "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/test/test4.cpp",
+  "output": "CMakeFiles/test4.dir/test/test4.cpp.o"
+},
+{
   "directory": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/src/lib",
   "command": "/usr/bin/c++  -I/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/include -std=gnu++11 -g -o CMakeFiles/TALib.dir/automata.cpp.o -c /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp",
   "file": "/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/src/lib/automata.cpp",

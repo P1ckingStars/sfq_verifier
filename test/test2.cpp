@@ -12,8 +12,8 @@ using namespace std;
 int main() {
   ConnectAutomataBuilder builder;
   Clock c(0);
-  auto or1 = builder.makeORGate();
-  auto or2 = builder.makeORGate();
+  auto or1 = builder.makeANDGate();
+  auto or2 = builder.makeANDGate();
   auto or3 = builder.makeORGate();
   builder.assign(or3.A(), or1.C());
   builder.assign(or3.B(), or2.C());
@@ -22,7 +22,7 @@ int main() {
   pca->print_map();
   dfa->print_transition_table();
   printf("REDUCE NOW\n");
-  dfa->full_reduce();
+  dfa->hopcroft();
   dfa->print_transition_table();
   return 0;
 }

@@ -19,12 +19,14 @@ add_subdirectory(src/lib/gates)
 add_executable(test1 test/test1.cpp)
 add_executable(test2 test/test2.cpp)
 add_executable(test3 test/test3.cpp)
+add_executable(test4 test/test4.cpp)
 
 # link_directories(${PROJECT_SOURCE_DIR}/dependency)
 
 target_link_libraries(test1 TALib GateLib)
 target_link_libraries(test2 TALib GateLib)
 target_link_libraries(test3 TALib GateLib)
+target_link_libraries(test4 TALib GateLib)
 
 target_include_directories(test1 PUBLIC
                           "${PROJECT_BINARY_DIR}"
@@ -35,6 +37,10 @@ target_include_directories(test2 PUBLIC
                           "${PROJECT_SOURCE_DIR}/src/include"
                           )
 target_include_directories(test3 PUBLIC
+                          "${PROJECT_BINARY_DIR}"
+                          "${PROJECT_SOURCE_DIR}/src/include"
+                          )
+target_include_directories(test4 PUBLIC
                           "${PROJECT_BINARY_DIR}"
                           "${PROJECT_SOURCE_DIR}/src/include"
                           )

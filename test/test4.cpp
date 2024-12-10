@@ -58,7 +58,7 @@ int main() {
   pca->print_map();
   dfa->print_transition_table();
     printf("REDUCE NOW\n");
-  dfa->full_reduce();
+  dfa->hopcroft();
   dfa->print_transition_table();
   return 0;
 }

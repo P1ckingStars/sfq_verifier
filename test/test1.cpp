@@ -39,7 +39,7 @@ int main() {
   pca1->print_map();
   dfa1->print_transition_table();
   printf("REDUCE NOW\n");
-  dfa1->full_reduce();
+  dfa1->hopcroft();
   dfa1->print_transition_table();
 
   ConnectAutomataBuilder builder2;
@@ -53,7 +53,7 @@ int main() {
   auto or1 = builder2.makeORGate();
   builder2.assign(and1.A(), df1.C());
   builder2.assign(and1.B(), df2.C());
-  builder2.assign(and2.A(), df1.C());
+  builder2.assign(and2.A(), df3.C());
   builder2.assign(and2.B(), not1.C());
   builder2.assign(or1.A(), and1.C());
   builder2.assign(or1.B(), and2.C());
@@ -63,7 +63,7 @@ int main() {
   pca2->print_map();
   dfa2->print_transition_table();
   printf("REDUCE NOW\n");
-  dfa2->full_reduce();
+  dfa2->hopcroft();
   dfa2->print_transition_table();
     
     /*

@@ -66,6 +66,7 @@ CMAKE_BINARY_DIR = /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build
 all: CMakeFiles/test1.dir/all
 all: CMakeFiles/test2.dir/all
 all: CMakeFiles/test3.dir/all
+all: CMakeFiles/test4.dir/all
 all: src/lib/all
 all: src/lib/gates/all
 .PHONY : all
@@ -74,6 +75,7 @@ all: src/lib/gates/all
 codegen: CMakeFiles/test1.dir/codegen
 codegen: CMakeFiles/test2.dir/codegen
 codegen: CMakeFiles/test3.dir/codegen
+codegen: CMakeFiles/test4.dir/codegen
 codegen: src/lib/codegen
 codegen: src/lib/gates/codegen
 .PHONY : codegen
@@ -87,6 +89,7 @@ preinstall: src/lib/gates/preinstall
 clean: CMakeFiles/test1.dir/clean
 clean: CMakeFiles/test2.dir/clean
 clean: CMakeFiles/test3.dir/clean
+clean: CMakeFiles/test4.dir/clean
 clean: src/lib/clean
 clean: src/lib/gates/clean
 .PHONY : clean
@@ -224,6 +227,38 @@ CMakeFiles/test3.dir/codegen:
 CMakeFiles/test3.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/clean
 .PHONY : CMakeFiles/test3.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test4.dir
+
+# All Build rule for target.
+CMakeFiles/test4.dir/all: src/lib/CMakeFiles/TALib.dir/all
+CMakeFiles/test4.dir/all: src/lib/gates/CMakeFiles/GateLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles --progress-num=25,26 "Built target test4"
+.PHONY : CMakeFiles/test4.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test4.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 20
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test4.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Documents/repos/sfq_workspace/sfq_verifier/build/CMakeFiles 0
+.PHONY : CMakeFiles/test4.dir/rule
+
+# Convenience name for target.
+test4: CMakeFiles/test4.dir/rule
+.PHONY : test4
+
+# codegen rule for target.
+CMakeFiles/test4.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/codegen
+.PHONY : CMakeFiles/test4.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test4.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/clean
+.PHONY : CMakeFiles/test4.dir/clean
 
 #=============================================================================
 # Target rules for target src/lib/CMakeFiles/TALib.dir
